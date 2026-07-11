@@ -15,7 +15,8 @@
 		47455DA2EB1E2B80B524FBEC /* PhotoPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B0F680B64DB625BE5471D /* PhotoPlaceholder.swift */; };
 		47DE0780A322F3357FA81E7B /* MatchbookTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98D2256AFD6018F15C8D1B1 /* MatchbookTabBar.swift */; };
 		4BAAFC17BA577D17EC0A264F /* Onest-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D0FF8921C4AAA59E2D5331C /* Onest-Regular.ttf */; };
-		53BA80C1D7E0DA98295FF03E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D0AA465535C9B06118A3732 /* Assets.xcassets */; };
+		53BA80C1D7E0DA98295FF03E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D0AA465535C9B06118A3732 /* Colors.xcassets */; };
+		B3C6B6A657AD48C79834B92A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE6C17C64B3946D389508909 /* Assets.xcassets */; };
 		77D15A1E4792BD7434866601 /* MatchbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72A952B391D03C41E92DF3 /* MatchbookApp.swift */; };
 		803054FD95274764274588AC /* Font+Matchbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F5BDA0B9B7E3548EDA76 /* Font+Matchbook.swift */; };
 		8C993318275845165C0A183B /* Onest-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28BA14B92CFFB1F381DFED96 /* Onest-Medium.ttf */; };
@@ -32,7 +33,7 @@
 		1E682ADFAD9B842B8120FB4C /* StepperControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperControl.swift; sourceTree = "<group>"; };
 		28BA14B92CFFB1F381DFED96 /* Onest-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Onest-Medium.ttf"; sourceTree = "<group>"; };
 		38F0AE4BC56950AFE445126C /* Onest-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Onest-SemiBold.ttf"; sourceTree = "<group>"; };
-		3D0AA465535C9B06118A3732 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3D0AA465535C9B06118A3732 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		4C28B5523CB75EF31F7CCC2D /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		4C43F5BDA0B9B7E3548EDA76 /* Font+Matchbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Matchbook.swift"; sourceTree = "<group>"; };
 		5602D09580BB43BA6347BC54 /* Color+Matchbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Matchbook.swift"; sourceTree = "<group>"; };
@@ -43,6 +44,7 @@
 		B3F6AE17EB3458B3541BE84D /* FloatingActionPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionPill.swift; sourceTree = "<group>"; };
 		B98D2256AFD6018F15C8D1B1 /* MatchbookTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchbookTabBar.swift; sourceTree = "<group>"; };
 		BB41C60600FA7D7E4121AA50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EE6C17C64B3946D389508909 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E09CE71800F0C14BE18D63F6 /* PlacementBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementBadge.swift; sourceTree = "<group>"; };
 		EC72A952B391D03C41E92DF3 /* MatchbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchbookApp.swift; sourceTree = "<group>"; };
 		FF8053C0A4CEEB067735A6B1 /* Unbounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Unbounded-Bold.ttf"; sourceTree = "<group>"; };
@@ -93,7 +95,8 @@
 		47391C7BFC1F9228B2BBE224 /* Matchbook */ = {
 			isa = PBXGroup;
 			children = (
-				3D0AA465535C9B06118A3732 /* Assets.xcassets */,
+				EE6C17C64B3946D389508909 /* Assets.xcassets */,
+				3D0AA465535C9B06118A3732 /* Colors.xcassets */,
 				BB41C60600FA7D7E4121AA50 /* Info.plist */,
 				1C73DE673B86DD4C3CCF6109 /* App */,
 				A0DDB1269997ACD91F24E97A /* DesignSystem */,
@@ -192,7 +195,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53BA80C1D7E0DA98295FF03E /* Assets.xcassets in Resources */,
+				B3C6B6A657AD48C79834B92A /* Assets.xcassets in Resources */,
+				53BA80C1D7E0DA98295FF03E /* Colors.xcassets in Resources */,
 				8C993318275845165C0A183B /* Onest-Medium.ttf in Resources */,
 				4BAAFC17BA577D17EC0A264F /* Onest-Regular.ttf in Resources */,
 				F4B354A145AE42113F651C8E /* Onest-SemiBold.ttf in Resources */,

@@ -9,22 +9,12 @@ struct FloatingActionPill: View {
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 10) {
-                Text(actionName)
-                    .font(.ui(size: 15, weight: .semibold, relativeTo: .subheadline))
-                    .foregroundStyle(Color.textPrimary)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
-                    .background(Color.cardSurface)
-                    .clipShape(Capsule())
-
-                Image(systemName: "plus")
-                    .font(.system(size: 20, weight: .semibold))
-                    .foregroundStyle(Color.white)
-                    .frame(width: 56, height: 56)
-                    .background(Color.brandGreen)
-                    .clipShape(Circle())
-            }
+            Image(systemName: "plus")
+                .font(.system(size: 20, weight: .semibold))
+                .foregroundStyle(Color.white)
+                .frame(width: 56, height: 56)
+                .background(Color.brandGreen)
+                .clipShape(Circle())
         }
         .buttonStyle(.plain)
         .shadow(color: .black.opacity(0.18), radius: 10, x: 0, y: 6)

@@ -13,10 +13,11 @@ struct StepperControl: View {
 
     var body: some View {
         HStack(spacing: 0) {
-            stepButton(
-                systemImage: "minus",
+            StepButton(
+                image: .minus,
                 isEnabled: value > minValue,
-                label: decreaseAccessibilityLabel
+                label: decreaseAccessibilityLabel,
+                value: value
             ) {
                 value = max(minValue, value - 1)
             }
@@ -26,10 +27,11 @@ struct StepperControl: View {
                 .frame(width: 1)
                 .padding(.vertical, 10)
 
-            stepButton(
-                systemImage: "plus",
+            StepButton(
+                image: .plus,
                 isEnabled: value < maxValue,
-                label: increaseAccessibilityLabel
+                label: increaseAccessibilityLabel,
+                value: value
             ) {
                 value = min(maxValue, value + 1)
             }
@@ -38,16 +40,18 @@ struct StepperControl: View {
         .background(Color.stepperFieldBg)
         .clipShape(.rect(cornerRadius: 12))
     }
+}
 
-    @ViewBuilder
-    private func stepButton(
-        systemImage: String,
-        isEnabled: Bool,
-        label: String,
-        action: @escaping () -> Void
-    ) -> some View {
+private struct StepButton: View {
+    let image: ImageResource
+    let isEnabled: Bool
+    let label: String
+    let value: Int
+    let action: () -> Void
+
+    var body: some View {
         Button(action: action) {
-            Image(systemName: systemImage)
+            Image(image)
                 .font(.system(size: 15, weight: .semibold))
                 .foregroundStyle(isEnabled ? Color.textPrimary : Color.textPlaceholder)
                 .frame(width: 44, height: 44)

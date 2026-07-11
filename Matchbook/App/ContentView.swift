@@ -7,9 +7,12 @@ struct ContentView: View {
     @State private var goals = 2
 
     private let tabs = [
-        MatchbookTabItem(title: "Album", systemImage: "photo.on.rectangle", selectedSystemImage: "photo.on.rectangle.fill"),
-        MatchbookTabItem(title: "Career", systemImage: "trophy", selectedSystemImage: "trophy.fill"),
-        MatchbookTabItem(title: "Profile", systemImage: "person.crop.circle", selectedSystemImage: "person.crop.circle.fill")
+        MatchbookTabItem(title: "Album",
+                         icon: Image(.iconTabAlbum)),
+        MatchbookTabItem(title: "Career",
+                         icon: Image(.iconTabTournament)),
+        MatchbookTabItem(title: "Profile",
+                         icon: Image(.iconTabProfile))
     ]
 
     var body: some View {
@@ -18,11 +21,11 @@ struct ContentView: View {
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    header
-                    statsRow
-                    placementRow
-                    photoCard
-                    stepperCard
+                    ShowcaseHeader()
+                    ShowcaseStatsRow()
+                    ShowcasePlacementRow()
+                    ShowcaseCoverPhotoCard()
+                    ShowcaseGoalsCard(goals: $goals)
                     Button("Add Tournament") { }
                         .buttonStyle(.primary)
                 }
@@ -39,8 +42,16 @@ struct ContentView: View {
             MatchbookTabBar(items: tabs, selection: $selectedTab)
         }
     }
+}
 
-    private var header: some View {
+#Preview {
+    ContentView()
+}
+
+// MARK: - Showcase sections
+
+private struct ShowcaseHeader: View {
+    var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text("Matchbook")
                 .font(.display(size: 32))
@@ -50,30 +61,40 @@ struct ContentView: View {
                 .foregroundStyle(Color.textMuted)
         }
     }
+}
 
-    private var statsRow: some View {
+private struct ShowcaseStatsRow: View {
+    var body: some View {
         HStack(spacing: 12) {
             StatPill(value: "12", label: "Tournaments", accessibilityLabel: "12 tournaments")
             StatPill(value: "34", label: "Goals", accessibilityLabel: "34 goals")
             StatPill(value: "5", label: "Podiums", highlighted: true, accessibilityLabel: "5 podium finishes")
         }
     }
+}
 
-    private var placementRow: some View {
+private struct ShowcasePlacementRow: View {
+    var body: some View {
         HStack(spacing: 12) {
             PlacementBadge(medal: "🥇", label: "Champions")
             PlacementBadge(medal: "🥈", label: "Finalists")
         }
     }
+}
 
-    private var photoCard: some View {
+private struct ShowcaseCoverPhotoCard: View {
+    var body: some View {
         PhotoPlaceholder(caption: "No Cover Photo")
             .frame(height: 160)
             .frame(maxWidth: .infinity)
             .cardStyle()
     }
+}
 
-    private var stepperCard: some View {
+private struct ShowcaseGoalsCard: View {
+    @Binding var goals: Int
+
+    var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Goals")
                 .font(.ui(size: 13, weight: .semibold, relativeTo: .footnote))
@@ -101,8 +122,4 @@ struct ContentView: View {
         .frame(maxWidth: .infinity)
         .cardStyle()
     }
-}
-
-#Preview {
-    ContentView()
 }

@@ -16,260 +16,225 @@ When writing any SwiftUI code (including via `/new-module` or `/swiftui-view`), 
 
 ---
 
+Matchbook uses the **Observation framework** (`@Observable`) exclusively — never `ObservableObject`, `@StateObject`, `@ObservedObject`, `@Published`, or Combine (Matchbook-Technical-Documentation.md §2). That changes which wrapper plays the "owns this reference type" role versus older SwiftUI code you may have seen elsewhere.
+
 ## Property Wrapper Selection Guide
 
 | Wrapper | Use When | Notes |
 |---------|----------|-------|
-| `@State` | Internal view state that triggers updates | Must be `private` |
-| `@Binding` | Child view needs to **modify** parent's state | Don't use for read-only |
-| `@StateObject` | View **creates and owns** an `ObservableObject` | Must be `private` |
-| `@ObservedObject` | View **receives** an `ObservableObject` from outside | Never create inline |
-| `let` | Read-only value passed from parent | Simplest option |
-| `var` | Read-only value that child observes via `.onChange()` | For reactive reads |
+| `@State` (value type) | View's own internal state that triggers updates | Must be `private` |
+| `@State` (`@Observable` reference) | View **creates and owns** an `@Observable` model — survives the view struct being recreated | Must be `private`; this replaces `@StateObject`'s role |
+| plain `let`/`var` (`@Observable` reference) | View **receives** an `@Observable` model created elsewhere (typically by a Coordinator) | Not private; no wrapper needed for change tracking — this replaces `@ObservedObject`'s role |
+| `@Bindable` | Need a two-way `Binding` into a property of an `@Observable` reference (e.g. a `TextField`) | See Rule 4 |
+| `@Binding` | Child needs to **write back** to a parent's plain value-type state | Don't use for read-only |
+| `let` | Read-only plain value passed from parent | Simplest option |
+| `@Environment` | Read a value supplied up the view tree (e.g. `\.modelContext`, `\.colorScheme`) | |
 
 ## Rules
 
 ### 1. @State Must Be Private
 
-Always mark `@State` properties as `private`. This makes it clear what's created by the view versus what's passed in.
+Always mark `@State` properties `private` — both for plain value state and for an `@Observable` model the view itself creates.
 
 ```swift
 // GOOD
 @State private var isAnimating = false
-@State private var selectedTab = 0
+@State private var viewModel = FeatureViewModel(repository: LiveFeatureRepository())
 
-// BAD — exposes internal state in generated init
+// BAD — exposes internal state in the generated init
 @State var isAnimating = false
 ```
 
-### 2. @Binding Only When Child Modifies
+### 2. @Binding Only When Child Modifies a Plain Value
 
-Use `@Binding` only when the child view needs to **write back** to the parent's state. If the child only reads, use `let`.
+Use `@Binding` only when the child view needs to **write back** to the parent's plain value-type state. If the child only reads, use `let`.
 
 ```swift
 // GOOD — child modifies the value
-struct ToggleView: View {
-    @Binding var isSelected: Bool
+struct MotmToggle: View {
+    @Binding var isMotm: Bool
 
     var body: some View {
-        Button("Toggle") {
-            isSelected.toggle()
-        }
+        Toggle("Player of the Match", isOn: $isMotm)
     }
 }
 
 // BAD — child only displays, doesn't modify
-struct DisplayView: View {
-    @Binding var title: String  // Unnecessary @Binding
+struct ScoreLabel: View {
+    @Binding var scoreLine: String   // Unnecessary @Binding
 
     var body: some View {
-        Text(title)
+        Text(scoreLine)
     }
 }
 
 // GOOD — use let for read-only
-struct DisplayView: View {
-    let title: String
+struct ScoreLabel: View {
+    let scoreLine: String
 
     var body: some View {
-        Text(title)
+        Text(scoreLine)
     }
 }
 ```
 
-### 3. @StateObject vs @ObservedObject — Ownership
+### 3. Owning vs Receiving an @Observable Model
 
-- **`@StateObject`**: View **creates and owns** the object — survives view re-creation
-- **`@ObservedObject`**: View **receives** the object from outside
+- The view **creates** the model → `@State private var viewModel = FeatureViewModel(...)`
+- The view **receives** the model from outside (a Coordinator, in Matchbook's MVVM+C) → plain `let viewModel: FeatureViewModel` (or non-private `var` if it must be reassigned)
 
-```swift
-// View creates it → @StateObject
-struct OwnerView: View {
-    @StateObject private var viewModel = MyViewModel()
+Unlike `ObservableObject`, `@Observable` does **not** need a property wrapper to participate in view updates — SwiftUI tracks whichever properties `body` actually reads, anywhere in the object graph reachable from a plain `let`/`var`. The wrapper choice here is about **lifecycle ownership** (does this view's own state need to survive it being recreated?), not about whether the view updates.
 
-    var body: some View {
-        ChildView(viewModel: viewModel)
-    }
-}
-
-// View receives it → @ObservedObject
-struct ChildView: View {
-    @ObservedObject var viewModel: MyViewModel
-
-    var body: some View {
-        List(viewModel.items, id: \.self) { Text($0) }
-    }
-}
-```
-
-**Critical mistake** — never create an `ObservableObject` inline with `@ObservedObject`:
+**Critical mistake** — never give an owned `@Observable` model a default value on a non-`@State` property:
 
 ```swift
-// WRONG — creates new instance on every view update
+// WRONG — SwiftUI can recreate FeatureView's struct on every parent update,
+// re-running this default initializer and silently discarding all prior state
 struct BadView: View {
-    @ObservedObject var viewModel = MyViewModel()  // BUG!
+    let viewModel = FeatureViewModel(repository: LiveFeatureRepository())
 }
 
-// CORRECT — owned objects use @StateObject
-struct GoodView: View {
-    @StateObject private var viewModel = MyViewModel()
+// CORRECT — an owned model uses @State so it survives the view being recreated
+struct GoodOwnedView: View {
+    @State private var viewModel = FeatureViewModel(repository: LiveFeatureRepository())
+}
+
+// ALSO CORRECT — model created elsewhere (e.g. a Coordinator) and injected, no default value
+struct GoodInjectedView: View {
+    let viewModel: FeatureViewModel
 }
 ```
 
-### 4. Don't Pass Values as @State
+### 4. @Bindable for Two-Way Bindings into an Observable Model
 
-Never declare passed values as `@State` or `@StateObject`. The value provided at init is only an **initial** value — subsequent parent updates are ignored.
+When a view needs `$viewModel.someProperty` (e.g. to bind a `TextField` directly to a ViewModel property), declare the property `@Bindable` instead of a plain `let`/`var`:
 
 ```swift
-// WRONG — child ignores updates from parent
-struct ChildView: View {
-    @State var item: Item  // Accepts initial value only!
+struct MatchEditView: View {
+    @Bindable var viewModel: MatchEditViewModel
 
     var body: some View {
-        Text(item.name)  // Shows initial value forever
-    }
-}
-
-// CORRECT — child receives updates
-struct ChildView: View {
-    let item: Item  // Or @Binding if child needs to modify
-
-    var body: some View {
-        Text(item.name)  // Updates when parent changes
+        TextField("Opponent", text: $viewModel.opponent)
     }
 }
 ```
 
-**Prevention**: Always mark `@State` and `@StateObject` as `private`. This prevents them from appearing in the generated initializer, making misuse impossible.
+`@Bindable` doesn't imply ownership — the model can still have been created by a Coordinator and merely handed to this view. Use it whenever you need the `$`-binding projection; use plain `let`/`var` (Rule 3) when the view only reads properties or calls methods.
 
-### 5. let vs var for Passed Values
+### 5. let vs var for Passed Plain Values
 
-Use `let` for read-only display. Use `var` only when the view needs to react to changes via `.onChange()`.
+Use `let` for read-only display. Use `var` only when the view needs to react to external changes via `.onChange(of:)`.
 
 ```swift
 // let — simple display
-struct ProfileHeader: View {
-    private let username: String
-    private let avatarUrl: URL
-
-    init(username: String, avatarUrl: URL) {
-        self.username = username
-        self.avatarUrl = avatarUrl
-    }
+struct PlayerHeader: View {
+    let name: String
+    let shirtNumber: Int
 
     var body: some View {
         HStack {
-            AsyncImage(url: avatarUrl)
-            Text(username)
+            Text(name)
+            Text("#\(shirtNumber)")
         }
     }
 }
 
 // var — reactive to external changes
-struct ReactiveView: View {
-    var externalValue: Int
+struct GoalCounter: View {
+    var goals: Int
 
     @State private var displayText = ""
 
     var body: some View {
         Text(displayText)
-            .onChange(of: externalValue) { newValue in
-                displayText = "Value changed to \(newValue)"
+            .onChange(of: goals) { _, newValue in
+                displayText = "\(newValue) goals"
             }
     }
 }
 ```
 
-### 6. State Privacy — Owned vs Passed
+### 6. State Privacy — Owned vs Received
 
-All view-owned state should be `private`. Passed-in values are not private.
+All view-owned state should be `private`. Received values (bindings, injected models, plain data) are not private.
 
 ```swift
-struct MyView: View {
-    // Passed from parent — not private
-    @Binding var isSelected: Bool
-    @ObservedObject var viewModel: SomeViewModel
-    let title: String
+struct MatchEditView: View {
+    // Received from a Coordinator or parent — not private
+    @Bindable var viewModel: MatchEditViewModel
+    @Binding var isPresented: Bool
+    let tournamentName: String
 
-    // Created by view — private
-    @State private var isExpanded = false
-    @StateObject private var localViewModel = LocalViewModel()
-    @Environment(\.colorScheme) private var colorScheme
+    // Created by this view — private
+    @State private var isExpandedDetails = false
+    @State private var localDraft = MatchDraft()
+    @Environment(\.modelContext) private var modelContext
 }
 ```
 
-### 7. Avoid Nested ObservableObject
+### 7. Nested @Observable Properties Propagate Automatically
 
-SwiftUI can't track changes through nested `ObservableObject` properties. Changes to the inner object won't trigger view updates.
+Unlike `ObservableObject`/Combine — where a nested `ObservableObject` held by a `@Published` property couldn't propagate its own inner changes — `@Observable` correctly tracks changes through nested observable references. You don't need to manually re-publish or flatten state to make inner changes visible.
 
 ```swift
-// BAD — nested ObservableObject breaks change tracking
-class Parent: ObservableObject {
-    @Published var child: Child  // Nested — inner changes invisible
+@Observable
+@MainActor
+final class TournamentDetailViewModel {
+    var summary: MatchSummaryViewModel   // nested @Observable — changes propagate correctly
 }
 
-class Child: ObservableObject {
-    @Published var value: Int
-}
-
-// GOOD — pass nested object directly to child views
-struct ParentView: View {
-    @StateObject private var parent = Parent()
-
-    var body: some View {
-        ChildView(child: parent.child)
-    }
-}
-
-struct ChildView: View {
-    @ObservedObject var child: Child
-
-    var body: some View {
-        Text("\(child.value)")
-    }
+@Observable
+@MainActor
+final class MatchSummaryViewModel {
+    var goals: Int = 0
 }
 ```
 
-## Cassandra-Specific: ViewModel Pattern
+## Matchbook: ViewModel Pattern
 
-In the Cassandra project, module ViewModels are always created in the Assembly and passed to the View. The standard pattern is:
+In Matchbook's MVVM+C architecture, a screen's ViewModel is always created by the owning Coordinator and handed to the View through its initializer — the View never creates its own ViewModel (Matchbook-Technical-Documentation.md §2.1; see also the `/new-module` skill).
 
 ```swift
-// Assembly creates the ViewModel — View receives via @StateObject
-struct FeatureView: View {
-    @StateObject private var viewModel: FeatureViewModel
-
-    init(viewModel: FeatureViewModel) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
+// Coordinator creates the ViewModel — the View receives it, doesn't own its lifecycle
+@MainActor
+final class TournamentCoordinator: Coordinator {
+    func start() {
+        let viewModel = TournamentListViewModel(player: player, repository: repository)
+        let view = TournamentListView(viewModel: viewModel)
+        navigationController.pushViewController(UIHostingController(rootView: view), animated: true)
     }
+}
+
+struct TournamentListView: View {
+    let viewModel: TournamentListViewModel   // received, not owned — plain `let`, no @State
 }
 ```
 
-This uses `@StateObject` (not `@ObservedObject`) because the view **owns** the lifecycle of the ViewModel once it receives it — the Assembly creates it but the view retains it. See `/swiftui-view` Rule 7 for the structural convention.
+Use a plain `let` here (Rule 3) because the Coordinator owns the ViewModel's lifecycle. Reach for `@Bindable` (Rule 4) only when the view needs a `Binding` into one of the ViewModel's own properties.
 
 ## Decision Flowchart
 
 ```
-Is this value owned by this view?
-├─ YES: Is it a simple value type?
-│       ├─ YES → @State private var
-│       └─ NO (class) → @StateObject private var
-│
-└─ NO (passed from parent):
-    ├─ Need to modify it? → @Binding var
-    ├─ ObservableObject? → @ObservedObject var
-    └─ Read-only value? → let (or var + .onChange)
+Is this an @Observable reference type (a ViewModel)?
+├─ Created by this view? → @State private var viewModel = FeatureViewModel(...)
+└─ Created elsewhere (e.g. a Coordinator) and passed in?
+    ├─ Need a $-Binding into one of its properties? → @Bindable var viewModel: FeatureViewModel
+    └─ Just reading properties / calling methods? → let viewModel: FeatureViewModel
+
+Is this a plain value (not an @Observable reference)?
+├─ Owned by this view → @State private var value = ...
+├─ Passed from parent, this view writes back → @Binding var value: T
+└─ Passed from parent, read-only → let value: T
 ```
 
 ## Review Checklist
 
 When reviewing, check every item and report pass/fail:
 
-- [ ] All `@State` properties are `private`
-- [ ] All `@StateObject` properties are `private`
-- [ ] `@Binding` only used when child **modifies** the value (not for read-only)
-- [ ] No `@ObservedObject var x = SomeClass()` — owned objects use `@StateObject`
-- [ ] No passed values declared as `@State` or `@StateObject`
-- [ ] `let` used for read-only passed values (not `@Binding`)
-- [ ] No nested `ObservableObject` expecting inner change tracking
-- [ ] Cassandra ViewModels use `@StateObject` with `_viewModel = StateObject(wrappedValue:)` init pattern
+- [ ] All `@State` properties (plain value or owned `@Observable` model) are `private`
+- [ ] `@Binding` only used when the child **modifies** a plain value (not for read-only)
+- [ ] No `ObservableObject`, `@StateObject`, `@ObservedObject`, `@Published`, or `Combine` import anywhere
+- [ ] A ViewModel received from a Coordinator is held as a plain `let`/`var` (or `@Bindable` if a `$`-binding is needed) — not `@State`
+- [ ] No `@Observable` model given a default value on a non-`@State` property (silently recreated on every redraw)
+- [ ] `let` used for read-only passed plain values (not `@Binding`)
+- [ ] `@Bindable` used wherever the view needs `$viewModel.property`, instead of a hand-rolled `Binding`
