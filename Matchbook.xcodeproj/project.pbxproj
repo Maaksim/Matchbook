@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		26CC06FF0B3F0D535E968C95 /* StepperControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E682ADFAD9B842B8120FB4C /* StepperControl.swift */; };
+		2EE0DD7FF869DD40C4B134D2 /* Color+Matchbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5602D09580BB43BA6347BC54 /* Color+Matchbook.swift */; };
+		2F6D17646A415F0CE8858B8D /* FloatingActionPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F6AE17EB3458B3541BE84D /* FloatingActionPill.swift */; };
+		4077C15684A9C765A34BD600 /* PlacementBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09CE71800F0C14BE18D63F6 /* PlacementBadge.swift */; };
+		43F45A42367C5E1193E0B83E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28B5523CB75EF31F7CCC2D /* PrimaryButton.swift */; };
+		47455DA2EB1E2B80B524FBEC /* PhotoPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B0F680B64DB625BE5471D /* PhotoPlaceholder.swift */; };
+		47DE0780A322F3357FA81E7B /* MatchbookTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98D2256AFD6018F15C8D1B1 /* MatchbookTabBar.swift */; };
+		4BAAFC17BA577D17EC0A264F /* Onest-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D0FF8921C4AAA59E2D5331C /* Onest-Regular.ttf */; };
+		53BA80C1D7E0DA98295FF03E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D0AA465535C9B06118A3732 /* Assets.xcassets */; };
+		77D15A1E4792BD7434866601 /* MatchbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72A952B391D03C41E92DF3 /* MatchbookApp.swift */; };
+		803054FD95274764274588AC /* Font+Matchbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F5BDA0B9B7E3548EDA76 /* Font+Matchbook.swift */; };
+		8C993318275845165C0A183B /* Onest-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28BA14B92CFFB1F381DFED96 /* Onest-Medium.ttf */; };
+		AD0AA1F009E3B3654EAE0D76 /* StatPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DACD83EC5465EAFD41883C /* StatPill.swift */; };
+		F4B354A145AE42113F651C8E /* Onest-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38F0AE4BC56950AFE445126C /* Onest-SemiBold.ttf */; };
+		F7279F78611ED1E9DFE11648 /* CardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1511563CA8332A8B06F28711 /* CardStyle.swift */; };
+		F8164ECC66FEF82C5E63AB97 /* Unbounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF8053C0A4CEEB067735A6B1 /* Unbounded-Bold.ttf */; };
+		FE36C2ADB439263F516B66ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162F015DFE5198A6A630C389 /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1511563CA8332A8B06F28711 /* CardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStyle.swift; sourceTree = "<group>"; };
+		162F015DFE5198A6A630C389 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1E682ADFAD9B842B8120FB4C /* StepperControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperControl.swift; sourceTree = "<group>"; };
+		28BA14B92CFFB1F381DFED96 /* Onest-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Onest-Medium.ttf"; sourceTree = "<group>"; };
+		38F0AE4BC56950AFE445126C /* Onest-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Onest-SemiBold.ttf"; sourceTree = "<group>"; };
+		3D0AA465535C9B06118A3732 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C28B5523CB75EF31F7CCC2D /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		4C43F5BDA0B9B7E3548EDA76 /* Font+Matchbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Matchbook.swift"; sourceTree = "<group>"; };
+		5602D09580BB43BA6347BC54 /* Color+Matchbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Matchbook.swift"; sourceTree = "<group>"; };
+		59DACD83EC5465EAFD41883C /* StatPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatPill.swift; sourceTree = "<group>"; };
+		789B0F680B64DB625BE5471D /* PhotoPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPlaceholder.swift; sourceTree = "<group>"; };
+		7D0FF8921C4AAA59E2D5331C /* Onest-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Onest-Regular.ttf"; sourceTree = "<group>"; };
+		86455D9A24AD095F1663F8AA /* Matchbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3F6AE17EB3458B3541BE84D /* FloatingActionPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionPill.swift; sourceTree = "<group>"; };
+		B98D2256AFD6018F15C8D1B1 /* MatchbookTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchbookTabBar.swift; sourceTree = "<group>"; };
+		BB41C60600FA7D7E4121AA50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E09CE71800F0C14BE18D63F6 /* PlacementBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementBadge.swift; sourceTree = "<group>"; };
+		EC72A952B391D03C41E92DF3 /* MatchbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchbookApp.swift; sourceTree = "<group>"; };
+		FF8053C0A4CEEB067735A6B1 /* Unbounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Unbounded-Bold.ttf"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0E163DCBD7D8019242C9D781 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				86455D9A24AD095F1663F8AA /* Matchbook.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C73DE673B86DD4C3CCF6109 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				162F015DFE5198A6A630C389 /* ContentView.swift */,
+				EC72A952B391D03C41E92DF3 /* MatchbookApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		343F2DDD39BCC0A4608C56FE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1511563CA8332A8B06F28711 /* CardStyle.swift */,
+				B3F6AE17EB3458B3541BE84D /* FloatingActionPill.swift */,
+				B98D2256AFD6018F15C8D1B1 /* MatchbookTabBar.swift */,
+				789B0F680B64DB625BE5471D /* PhotoPlaceholder.swift */,
+				E09CE71800F0C14BE18D63F6 /* PlacementBadge.swift */,
+				4C28B5523CB75EF31F7CCC2D /* PrimaryButton.swift */,
+				59DACD83EC5465EAFD41883C /* StatPill.swift */,
+				1E682ADFAD9B842B8120FB4C /* StepperControl.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3E542AFE0EC81F19B8333CBB = {
+			isa = PBXGroup;
+			children = (
+				47391C7BFC1F9228B2BBE224 /* Matchbook */,
+				DE708DD0F1BB03ACE66FCF9E /* Resources */,
+				0E163DCBD7D8019242C9D781 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		47391C7BFC1F9228B2BBE224 /* Matchbook */ = {
+			isa = PBXGroup;
+			children = (
+				3D0AA465535C9B06118A3732 /* Assets.xcassets */,
+				BB41C60600FA7D7E4121AA50 /* Info.plist */,
+				1C73DE673B86DD4C3CCF6109 /* App */,
+				A0DDB1269997ACD91F24E97A /* DesignSystem */,
+			);
+			path = Matchbook;
+			sourceTree = "<group>";
+		};
+		8A96BB77A8E583FB8E56DBFC /* Foundations */ = {
+			isa = PBXGroup;
+			children = (
+				5602D09580BB43BA6347BC54 /* Color+Matchbook.swift */,
+				4C43F5BDA0B9B7E3548EDA76 /* Font+Matchbook.swift */,
+			);
+			path = Foundations;
+			sourceTree = "<group>";
+		};
+		A0DDB1269997ACD91F24E97A /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				343F2DDD39BCC0A4608C56FE /* Components */,
+				8A96BB77A8E583FB8E56DBFC /* Foundations */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		CD90CC6BB1938838D9D8F952 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				28BA14B92CFFB1F381DFED96 /* Onest-Medium.ttf */,
+				7D0FF8921C4AAA59E2D5331C /* Onest-Regular.ttf */,
+				38F0AE4BC56950AFE445126C /* Onest-SemiBold.ttf */,
+				FF8053C0A4CEEB067735A6B1 /* Unbounded-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		DE708DD0F1BB03ACE66FCF9E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CD90CC6BB1938838D9D8F952 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		49AEA7F0EAB5ADC4B8AE14AE /* Matchbook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66C8F7B6B68817CBA8E95C31 /* Build configuration list for PBXNativeTarget "Matchbook" */;
+			buildPhases = (
+				6342F33A3148CFE6984A172D /* Sources */,
+				95582D397BD69DC1F143EC53 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Matchbook;
+			packageProductDependencies = (
+			);
+			productName = Matchbook;
+			productReference = 86455D9A24AD095F1663F8AA /* Matchbook.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00E0A00F3605EB95EC2E5AC1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = 48C02AEDDE35EB88ACED449C /* Build configuration list for PBXProject "Matchbook" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 3E542AFE0EC81F19B8333CBB;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 0E163DCBD7D8019242C9D781 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				49AEA7F0EAB5ADC4B8AE14AE /* Matchbook */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		95582D397BD69DC1F143EC53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53BA80C1D7E0DA98295FF03E /* Assets.xcassets in Resources */,
+				8C993318275845165C0A183B /* Onest-Medium.ttf in Resources */,
+				4BAAFC17BA577D17EC0A264F /* Onest-Regular.ttf in Resources */,
+				F4B354A145AE42113F651C8E /* Onest-SemiBold.ttf in Resources */,
+				F8164ECC66FEF82C5E63AB97 /* Unbounded-Bold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6342F33A3148CFE6984A172D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7279F78611ED1E9DFE11648 /* CardStyle.swift in Sources */,
+				2EE0DD7FF869DD40C4B134D2 /* Color+Matchbook.swift in Sources */,
+				FE36C2ADB439263F516B66ED /* ContentView.swift in Sources */,
+				2F6D17646A415F0CE8858B8D /* FloatingActionPill.swift in Sources */,
+				803054FD95274764274588AC /* Font+Matchbook.swift in Sources */,
+				77D15A1E4792BD7434866601 /* MatchbookApp.swift in Sources */,
+				47DE0780A322F3357FA81E7B /* MatchbookTabBar.swift in Sources */,
+				47455DA2EB1E2B80B524FBEC /* PhotoPlaceholder.swift in Sources */,
+				4077C15684A9C765A34BD600 /* PlacementBadge.swift in Sources */,
+				43F45A42367C5E1193E0B83E /* PrimaryButton.swift in Sources */,
+				AD0AA1F009E3B3654EAE0D76 /* StatPill.swift in Sources */,
+				26CC06FF0B3F0D535E968C95 /* StepperControl.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		08C784A46CDB855801D53E2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		90169552ABF513E1549254AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 23V2C5FWV2;
+				INFOPLIST_FILE = Matchbook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.matchbook.app;
+				PRODUCT_NAME = Matchbook;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B866F561F4CB951AC325C1D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FABA41218D3E33C10C3CB952 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 23V2C5FWV2;
+				INFOPLIST_FILE = Matchbook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.matchbook.app;
+				PRODUCT_NAME = Matchbook;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		48C02AEDDE35EB88ACED449C /* Build configuration list for PBXProject "Matchbook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B866F561F4CB951AC325C1D1 /* Debug */,
+				08C784A46CDB855801D53E2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		66C8F7B6B68817CBA8E95C31 /* Build configuration list for PBXNativeTarget "Matchbook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90169552ABF513E1549254AE /* Debug */,
+				FABA41218D3E33C10C3CB952 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 00E0A00F3605EB95EC2E5AC1 /* Project object */;
+}
