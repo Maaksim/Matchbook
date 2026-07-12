@@ -34,12 +34,20 @@ jobs:
       - name: Pick an iOS Simulator
         id: sim
         run: |
-          # Grab the UDID of the first available iPhone simulator so we don't
-          # depend on a specific device model being pre-installed on the runner.
-          udid=$(xcrun simctl list devices available \
-            | grep -E 'iPhone' \
-            | grep -oE '[0-9A-F]{8}-([0-9A-F]{4}-){3}[0-9A-F]{12}' \
-            | head -1)
+          # Select the newest-OS iPhone simulator by UDID. Targeting a UDID
+          # (rather than name+OS) avoids "device not found" failures when the
+          # runner's Xcode ships different device models than we hardcode — a
+          # given model may only exist on an older runtime (e.g. "iPhone 16e"
+          # exists only on iOS 26.2, so name=iPhone 16e + OS:latest fails).
+          udid=$(xcrun simctl list devices available | awk '
+            /^-- iOS/ { match($0, /[0-9]+\.[0-9]+/); ver=substr($0,RSTART,RLENGTH)+0; next }
+            /iPhone/ {
+              if (match($0, /[0-9A-F]{8}-([0-9A-F]{4}-){3}[0-9A-F]{12}/)) {
+                if (ver>=bestver) { bestver=ver; bestid=substr($0,RSTART,RLENGTH) }
+              }
+            }
+            END { print bestid }
+          ')
           if [ -z "$udid" ]; then
             echo "No available iPhone simulator found" >&2
             xcrun simctl list devices available >&2
