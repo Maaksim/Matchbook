@@ -71,9 +71,16 @@ jobs:
         run: |
           set -o pipefail
           fmt=$(command -v xcbeautify || echo cat)
+          # -parallel-testing-enabled NO: the Swift Testing suites each build their
+          # own in-memory SwiftData ModelContainer; running them in parallel lets
+          # concurrent in-memory stores collide (one context's internal reset
+          # invalidates another suite's live models -> "instance destroyed by
+          # ModelContext.reset" crash). Serial execution keeps one container live
+          # at a time. Fast either way (19 tests, <1s).
           xcodebuild test-without-building \
             -project "$PROJECT" \
             -scheme "$SCHEME" \
             -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}" \
+            -parallel-testing-enabled NO \
             CODE_SIGNING_ALLOWED=NO \
             | "$fmt"
