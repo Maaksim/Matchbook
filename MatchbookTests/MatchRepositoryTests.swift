@@ -5,11 +5,16 @@ import Testing
 
 @MainActor
 struct MatchRepositoryTests {
+    // Held for the test's lifetime: an in-memory ModelContainer must outlive the model
+    // instances created against it. If only its mainContext were retained the container
+    // would deallocate after init(), resetting the context and invalidating those instances
+    // ("This model instance was destroyed by calling ModelContext.reset" crash on iOS 26).
+    private let container: ModelContainer
     private let repository: SwiftDataMatchRepository
     private let tournament: Tournament
 
     init() throws {
-        let container = try ModelContainer(
+        container = try ModelContainer(
             for: Player.self, Tournament.self, Match.self, MediaItem.self, GoalMoment.self,
             configurations: ModelConfiguration(isStoredInMemoryOnly: true)
         )

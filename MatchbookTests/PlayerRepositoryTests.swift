@@ -5,10 +5,14 @@ import Testing
 
 @MainActor
 struct PlayerRepositoryTests {
+    // Retained so the in-memory store outlives the models created against it — see the note
+    // in MatchRepositoryTests. Without it the container deallocs after init() and the context
+    // resets ("ModelContext.reset" crash on iOS 26).
+    private let container: ModelContainer
     private let repository: SwiftDataPlayerRepository
 
     init() throws {
-        let container = try ModelContainer(
+        container = try ModelContainer(
             for: Player.self, Tournament.self, Match.self, MediaItem.self, GoalMoment.self,
             configurations: ModelConfiguration(isStoredInMemoryOnly: true)
         )
