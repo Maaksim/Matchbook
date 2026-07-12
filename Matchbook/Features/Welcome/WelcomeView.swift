@@ -1,8 +1,9 @@
-import SwiftData
 import SwiftUI
 
-struct EmptyStateView: View {
-    let viewModel: LaunchViewModel
+/// Shown as a full-screen stage by `AppCoordinator` when there's no child yet — before the
+/// tab bar exists. "Додати дитину" calls back to the coordinator (child creation is WP3).
+struct WelcomeView: View {
+    let onAddChild: () -> Void
 
     var body: some View {
         ZStack {
@@ -18,22 +19,17 @@ struct EmptyStateView: View {
                     .padding(24)
                 }
 
-                Button("＋ Додати дитину", action: viewModel.addChild)
+                Button("＋ Додати дитину", action: onAddChild)
                     .buttonStyle(.primary)
                     .padding(.horizontal, 24)
                     .padding(.vertical, 16)
-            }
-        }
-        .safeAreaInset(edge: .top) {
-            if viewModel.showICloudBanner {
-                ICloudUnavailableBanner(onDismiss: viewModel.dismissICloudBanner)
             }
         }
     }
 }
 
 // MARK: - UI components
-extension EmptyStateView {
+extension WelcomeView {
     private var coverTile: some View {
         ZStack {
             PhotoPlaceholder(caption: "")
@@ -88,9 +84,5 @@ private struct FeatureRow: View {
 }
 
 #Preview {
-    let container = try! ModelContainer(
-        for: Player.self, Tournament.self, Match.self, MediaItem.self, GoalMoment.self,
-        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
-    )
-    return EmptyStateView(viewModel: LaunchViewModel(repository: SwiftDataPlayerRepository(modelContext: container.mainContext)))
+    WelcomeView(onAddChild: {})
 }

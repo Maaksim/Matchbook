@@ -15,17 +15,3 @@ final class ProfileTabCoordinator: Coordinator {
         navigationController.setViewControllers([UIHostingController(rootView: view)], animated: false)
     }
 }
-
-private struct TabPlaceholderView: View {
-    let title: String
-
-    var body: some View {
-        ZStack {
-            Color.screenBackground.ignoresSafeArea()
-            Text(title)
-                .font(.display(size: 22))
-                .foregroundStyle(Color.textPrimary)
-        }
-        .navigationTitle(title)
-    }
-}

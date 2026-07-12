@@ -1,7 +1,7 @@
 import SwiftUI
 
-/// Full-bleed brand moment shown on cold launch. `PlayerCoordinator` auto-dismisses this
-/// after ~1s once the launch destination has resolved.
+/// Full-bleed brand moment shown on cold launch. `AppCoordinator` swaps this out after ~1s
+/// once the launch destination has resolved.
 struct SplashView: View {
     var body: some View {
         ZStack {
