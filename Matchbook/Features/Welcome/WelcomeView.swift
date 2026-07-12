@@ -32,17 +32,19 @@ struct WelcomeView: View {
 extension WelcomeView {
     private var coverTile: some View {
         ZStack {
-            PhotoPlaceholder(caption: "")
+            Rectangle()
+                .fill(Color.chipTint)
+                .cornerRadius(24)
             Text("⚽️")
-                .font(.system(size: 40))
+                .font(.system(size: 52))
         }
-        .frame(height: 140)
+        .frame(width: 140, height: 140)
         .frame(maxWidth: .infinity)
         .clipShape(.rect(cornerRadius: 20))
     }
 
     private var textBlock: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .center, spacing: 8) {
             Text("Вітаємо в Матчбуці")
                 .font(.display(size: 26))
                 .foregroundStyle(Color.textPrimary)
@@ -54,22 +56,24 @@ extension WelcomeView {
 
     private var featureRows: some View {
         VStack(alignment: .leading, spacing: 16) {
-            FeatureRow(systemImage: "trophy.fill", text: "Турнір — окремий альбом, не дашборд")
-            FeatureRow(systemImage: "photo.fill", text: "Фото на першому плані")
-            FeatureRow(systemImage: "square.and.arrow.up.fill", text: "Картки для чатів команди й сторіз")
+            FeatureRow(imageText: "🏆", text: "Турнір — окремий альбом, не дашборд")
+            FeatureRow(imageText: "🖼️", text: "Фото на першому плані")
+            FeatureRow(imageText: "↗", text: "Картки для чатів команди й сторіз")
         }
     }
 }
 
 private struct FeatureRow: View {
-    let systemImage: String
+    let imageText: String
     let text: String
 
     var body: some View {
         HStack(spacing: 12) {
             ZStack {
-                Circle().fill(Color.chipTint)
-                Image(systemName: systemImage)
+                Rectangle()
+                    .fill(Color.chipTint)
+                    .cornerRadius(8)
+                Text(imageText)
                     .foregroundStyle(Color.brandGreen)
             }
             .frame(width: 32, height: 32)

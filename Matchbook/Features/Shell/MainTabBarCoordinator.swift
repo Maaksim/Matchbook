@@ -1,10 +1,6 @@
 import UIKit
 
-/// Owns the root `UITabBarController` (Альбом / Турніри / Профіль) and constructs one
-/// `UINavigationController` + concrete tab `Coordinator` per tab. `AppCoordinator` installs
-/// its `tabBarController` once a child exists — this coordinator has nothing to do with the
-/// Splash or the launch decision anymore. Like `AppCoordinator`, it owns a tab bar rather
-/// than a single nav stack, so it doesn't itself conform to `Coordinator`.
+/// Owns the root `UITabBarController` (Альбом / Турніри / Профіль) and constructs one `UINavigationController` + concrete tab `Coordinator` per tab.
 @MainActor
 final class MainTabBarCoordinator {
     let tabBarController = UITabBarController()
@@ -21,21 +17,29 @@ final class MainTabBarCoordinator {
     func start() {
         let albumNavigationController = UINavigationController()
         albumNavigationController.tabBarItem = UITabBarItem(
-            title: "Альбом", image: UIImage(resource: .iconTabAlbum), tag: 0
+            title: "Альбом",
+            image: UIImage(resource: .iconTabAlbum),
+            tag: 0
         )
 
         let tournamentsNavigationController = UINavigationController()
         tournamentsNavigationController.tabBarItem = UITabBarItem(
-            title: "Турніри", image: UIImage(resource: .iconTabTournament), tag: 1
+            title: "Турніри",
+            image: UIImage(resource: .iconTabTournament),
+            tag: 1
         )
 
         let profileNavigationController = UINavigationController()
         profileNavigationController.tabBarItem = UITabBarItem(
-            title: "Профіль", image: UIImage(resource: .iconTabProfile), tag: 2
+            title: "Профіль",
+            image: UIImage(resource: .iconTabProfile),
+            tag: 2
         )
 
         tabBarController.viewControllers = [
-            albumNavigationController, tournamentsNavigationController, profileNavigationController,
+            albumNavigationController,
+            tournamentsNavigationController,
+            profileNavigationController,
         ]
 
         let albumCoordinator = AlbumTabCoordinator(

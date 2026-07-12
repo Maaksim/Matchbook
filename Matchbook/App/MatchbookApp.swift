@@ -24,6 +24,7 @@ struct MatchbookApp: App {
             // Splash and (if there's no child yet) Welcome as full-screen stages before the
             // MainTabBarCoordinator's tab bar ever appears.
             AppCoordinatorHost()
+                .ignoresSafeArea()
         }
         .modelContainer(modelContainer)
     }

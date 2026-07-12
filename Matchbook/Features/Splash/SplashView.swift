@@ -5,7 +5,8 @@ import SwiftUI
 struct SplashView: View {
     var body: some View {
         ZStack {
-            Color.brandGreen.ignoresSafeArea()
+            Color.brandGreen
+                .ignoresSafeArea()
 
             VStack(spacing: 16) {
                 Spacer()

@@ -11,7 +11,9 @@ final class AlbumTabCoordinator: Coordinator {
     private let repositories: Repositories
     private let player: Player
 
-    init(navigationController: UINavigationController, repositories: Repositories, player: Player) {
+    init(navigationController: UINavigationController,
+         repositories: Repositories,
+         player: Player) {
         self.navigationController = navigationController
         self.repositories = repositories
         self.player = player

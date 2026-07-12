@@ -5,7 +5,8 @@ import UIKit
 /// now so WP4's `AlbumHomeViewModel` can be constructed here without changing the call site.
 enum AlbumBuilder {
     @MainActor
-    static func makeHome(player: Player, repositories: Repositories) -> UIViewController {
+    static func makeHome(player: Player,
+                         repositories: Repositories) -> UIViewController {
         UIHostingController(rootView: AlbumHomeView(player: player))
     }
 }

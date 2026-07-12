@@ -55,7 +55,8 @@ final class AppCoordinator {
     }
 
     private func showMainApp(activePlayer: Player) {
-        let coordinator = MainTabBarCoordinator(repositories: repositories, activePlayer: activePlayer)
+        let coordinator = MainTabBarCoordinator(repositories: repositories,
+                                                activePlayer: activePlayer)
         coordinator.start()
         mainTabBarCoordinator = coordinator
         rootViewController.setContent(coordinator.tabBarController, animated: true)
