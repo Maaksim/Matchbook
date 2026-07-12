@@ -18,7 +18,7 @@ final class AppCoordinator {
 
     /// Keeps the Splash up for at least this long so a fast launch still reads as an
     /// intentional brand moment rather than a flash.
-    private let minimumSplashDuration: Duration = .seconds(1)
+    private let minimumSplashDuration: Duration = .seconds(2)
 
     init(repositories: Repositories) {
         self.repositories = repositories
