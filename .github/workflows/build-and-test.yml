@@ -13,6 +13,7 @@ concurrency:
 jobs:
   build-and-test:
     name: Build and test
+    timeout-minutes: 20
     runs-on: macos-15
     env:
       SCHEME: Matchbook
