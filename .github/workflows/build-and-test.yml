@@ -6,22 +6,74 @@ on:
       - develop
       - main
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  test:
-    runs-on: macos-latest
+  build-and-test:
+    name: Build and test
+    timeout-minutes: 20
+    runs-on: macos-15
+    env:
+      SCHEME: Matchbook
+      PROJECT: Matchbook.xcodeproj
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: maxim-lobanov/setup-xcode@v1
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: "26.0"
+          xcode-version: latest-stable
 
-      - name: Resolve Packages
-        run: xcodebuild -resolvePackageDependencies
+      - name: Resolve Swift packages
+        run: xcodebuild -resolvePackageDependencies -project "$PROJECT" -scheme "$SCHEME"
 
-      - name: Build & Test
+      - name: Pick an iOS Simulator
+        id: sim
         run: |
-          xcodebuild test \
-            -scheme Matchbook \
-            -destination 'platform=iOS Simulator,name=iPhone 16'
+          # Select the newest-OS iPhone simulator by UDID. Targeting a UDID
+          # (rather than name+OS) avoids "device not found" failures when the
+          # runner's Xcode ships different device models than we hardcode — a
+          # given model may only exist on an older runtime (e.g. "iPhone 16e"
+          # exists only on iOS 26.2, so name=iPhone 16e + OS:latest fails).
+          udid=$(xcrun simctl list devices available | awk '
+            /^-- iOS/ { match($0, /[0-9]+\.[0-9]+/); ver=substr($0,RSTART,RLENGTH)+0; next }
+            /iPhone/ {
+              if (match($0, /[0-9A-F]{8}-([0-9A-F]{4}-){3}[0-9A-F]{12}/)) {
+                if (ver>=bestver) { bestver=ver; bestid=substr($0,RSTART,RLENGTH) }
+              }
+            }
+            END { print bestid }
+          ')
+          if [ -z "$udid" ]; then
+            echo "No available iPhone simulator found" >&2
+            xcrun simctl list devices available >&2
+            exit 1
+          fi
+          echo "Using simulator UDID: $udid"
+          echo "udid=$udid" >> "$GITHUB_OUTPUT"
+
+      - name: Build for testing
+        run: |
+          set -o pipefail
+          fmt=$(command -v xcbeautify || echo cat)
+          xcodebuild build-for-testing \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}" \
+            CODE_SIGNING_ALLOWED=NO \
+            | "$fmt"
+
+      - name: Test
+        run: |
+          set -o pipefail
+          fmt=$(command -v xcbeautify || echo cat)
+          xcodebuild test-without-building \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}" \
+            CODE_SIGNING_ALLOWED=NO \
+            | "$fmt"
