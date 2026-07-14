@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MatchbookTabItem {
-    let title: String
+    let title: LocalizedStringResource
     let icon: Image
 }
 
@@ -54,7 +54,7 @@ private struct TabBarButton: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(item.title)
+        .accessibilityLabel(Text(item.title))
         .accessibilityAddTraits(isSelected ? [.isSelected] : [])
     }
 }
@@ -64,18 +64,18 @@ private struct TabBarButton: View {
 
     ZStack {
         Color.screenBackground.ignoresSafeArea()
-        Text("Screen content")
+        Text(verbatim: "Screen content")
             .font(.ui(size: 15))
             .foregroundStyle(Color.textMuted)
     }
     .safeAreaInset(edge: .bottom) {
         MatchbookTabBar(
             items: [
-                MatchbookTabItem(title: "Album",
+                MatchbookTabItem(title: "tab_album_key",
                                  icon: Image(.iconTabAlbum)),
-                MatchbookTabItem(title: "Career",
+                MatchbookTabItem(title: "tab_tournaments_key",
                                  icon: Image(.iconTabTournament)),
-                MatchbookTabItem(title: "Profile",
+                MatchbookTabItem(title: "tab_profile_key",
                                  icon: Image(.iconTabProfile))
             ],
             selection: $selection

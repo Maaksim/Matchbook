@@ -56,6 +56,9 @@
 		B53041D9D0A549E193011879 /* AlbumBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52A1FEA939498B834DB5E7 /* AlbumBuilder.swift */; };
 		0BAAA9098E4D43CE999D2456 /* TabPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06599E17411D4B3FBF46F0FF /* TabPlaceholderView.swift */; };
 		28CB5AFAB24B40B6B6B0D612 /* LaunchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A285C110C48C590351971 /* LaunchViewModelTests.swift */; };
+		A1B2C3D4E5F60718293A4B5D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5C /* Localizable.xcstrings */; };
+		A1B2C3D4E5F60718293A4B5F /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5E /* Localization.swift */; };
+		A1B2C3D4E5F60718293A4B62 /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B61 /* LocalizationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +125,9 @@
 		9D52A1FEA939498B834DB5E7 /* AlbumBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumBuilder.swift; sourceTree = "<group>"; };
 		06599E17411D4B3FBF46F0FF /* TabPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPlaceholderView.swift; sourceTree = "<group>"; };
 		EB5A285C110C48C590351971 /* LaunchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModelTests.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60718293A4B5C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		A1B2C3D4E5F60718293A4B5E /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60718293A4B61 /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +197,7 @@
 				4B61B729E38B472391905F5A /* Matchbook.entitlements */,
 				1C73DE673B86DD4C3CCF6109 /* App */,
 				AB504BDD7E334E65B27F312B /* Navigation */,
+				A1B2C3D4E5F60718293A4B60 /* Localization */,
 				1B49A691B22D4507AD5C8E47 /* Launch */,
 				E3A60CE8C16C43078BA9740C /* Features */,
 				A0DDB1269997ACD91F24E97A /* DesignSystem */,
@@ -245,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				EB5A285C110C48C590351971 /* LaunchViewModelTests.swift */,
+				A1B2C3D4E5F60718293A4B61 /* LocalizationTests.swift */,
 				381D807C56774EE2A407EE34 /* MatchRepositoryTests.swift */,
 				99F28B75A4F940B3BAF14B9C /* MediaRepositoryTests.swift */,
 				AECF711EF2414247A1269CC5 /* PlayerRepositoryTests.swift */,
@@ -253,10 +261,19 @@
 			path = MatchbookTests;
 			sourceTree = "<group>";
 		};
+		A1B2C3D4E5F60718293A4B60 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F60718293A4B5E /* Localization.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		DE708DD0F1BB03ACE66FCF9E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				CD90CC6BB1938838D9D8F952 /* Fonts */,
+				A1B2C3D4E5F60718293A4B5C /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -405,11 +422,12 @@
 				LastUpgradeCheck = 1430;
 			};
 			buildConfigurationList = 48C02AEDDE35EB88ACED449C /* Build configuration list for PBXProject "Matchbook" */;
-			developmentRegion = en;
+			developmentRegion = uk;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
 				en,
+				uk,
 			);
 			mainGroup = 3E542AFE0EC81F19B8333CBB;
 			minimizedProjectReferenceProxies = 1;
@@ -438,6 +456,7 @@
 			files = (
 				B3C6B6A657AD48C79834B92A /* Assets.xcassets in Resources */,
 				53BA80C1D7E0DA98295FF03E /* Colors.xcassets in Resources */,
+				A1B2C3D4E5F60718293A4B5D /* Localizable.xcstrings in Resources */,
 				8C993318275845165C0A183B /* Onest-Medium.ttf in Resources */,
 				4BAAFC17BA577D17EC0A264F /* Onest-Regular.ttf in Resources */,
 				F4B354A145AE42113F651C8E /* Onest-SemiBold.ttf in Resources */,
@@ -454,6 +473,7 @@
 			files = (
 				F7279F78611ED1E9DFE11648 /* CardStyle.swift in Sources */,
 				2EE0DD7FF869DD40C4B134D2 /* Color+Matchbook.swift in Sources */,
+				A1B2C3D4E5F60718293A4B5F /* Localization.swift in Sources */,
 				FE36C2ADB439263F516B66ED /* ContentView.swift in Sources */,
 				2F6D17646A415F0CE8858B8D /* FloatingActionPill.swift in Sources */,
 				803054FD95274764274588AC /* Font+Matchbook.swift in Sources */,
@@ -498,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28CB5AFAB24B40B6B6B0D612 /* LaunchViewModelTests.swift in Sources */,
+				A1B2C3D4E5F60718293A4B62 /* LocalizationTests.swift in Sources */,
 				2BC760D7079445E0B78C1BB5 /* MatchRepositoryTests.swift in Sources */,
 				1104B8DA1A4B470E92BB272D /* MediaRepositoryTests.swift in Sources */,
 				E142918C78E442CE813CC18A /* PlayerRepositoryTests.swift in Sources */,
@@ -590,6 +611,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.matchbook.app;
 				PRODUCT_NAME = Matchbook;
 				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -717,6 +739,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.matchbook.app;
 				PRODUCT_NAME = Matchbook;
 				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

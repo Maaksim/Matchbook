@@ -8,8 +8,8 @@ struct StepperControl: View {
     @Binding var value: Int
     var minValue: Int = 0
     var maxValue: Int = Int.max
-    let decreaseAccessibilityLabel: String
-    let increaseAccessibilityLabel: String
+    let decreaseAccessibilityLabel: LocalizedStringResource
+    let increaseAccessibilityLabel: LocalizedStringResource
 
     var body: some View {
         HStack(spacing: 0) {
@@ -45,7 +45,7 @@ struct StepperControl: View {
 private struct StepButton: View {
     let image: ImageResource
     let isEnabled: Bool
-    let label: String
+    let label: LocalizedStringResource
     let value: Int
     let action: () -> Void
 
@@ -58,8 +58,8 @@ private struct StepButton: View {
                 .contentShape(Rectangle())
         }
         .disabled(!isEnabled)
-        .accessibilityLabel(label)
-        .accessibilityValue("\(value)")
+        .accessibilityLabel(Text(label))
+        .accessibilityValue(value.formatted())
     }
 }
 
@@ -67,7 +67,7 @@ private struct StepButton: View {
     @Previewable @State var goals = 2
 
     VStack(spacing: 12) {
-        Text("\(goals)")
+        Text(goals.formatted())
             .font(.display(size: 34))
             .foregroundStyle(Color.textPrimary)
 
@@ -75,8 +75,8 @@ private struct StepButton: View {
             value: $goals,
             minValue: 0,
             maxValue: 20,
-            decreaseAccessibilityLabel: "Decrease goals",
-            increaseAccessibilityLabel: "Increase goals"
+            decreaseAccessibilityLabel: "decrease_goals_accessibility_key",
+            increaseAccessibilityLabel: "increase_goals_accessibility_key"
         )
         .frame(width: 120)
     }

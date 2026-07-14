@@ -7,11 +7,11 @@ struct ContentView: View {
     @State private var goals = 2
 
     private let tabs = [
-        MatchbookTabItem(title: "Album",
+        MatchbookTabItem(title: "tab_album_key",
                          icon: Image(.iconTabAlbum)),
-        MatchbookTabItem(title: "Career",
+        MatchbookTabItem(title: "tab_tournaments_key",
                          icon: Image(.iconTabTournament)),
-        MatchbookTabItem(title: "Profile",
+        MatchbookTabItem(title: "tab_profile_key",
                          icon: Image(.iconTabProfile))
     ]
 
@@ -26,7 +26,7 @@ struct ContentView: View {
                     ShowcasePlacementRow()
                     ShowcaseCoverPhotoCard()
                     ShowcaseGoalsCard(goals: $goals)
-                    Button("Add Tournament") { }
+                    Button("add_tournament_key") { }
                         .buttonStyle(.primary)
                 }
                 .padding(20)
@@ -34,7 +34,7 @@ struct ContentView: View {
             }
         }
         .overlay(alignment: .bottomTrailing) {
-            FloatingActionPill(actionName: "Add Match") { }
+            FloatingActionPill(actionName: "add_match_key") { }
                 .padding(.trailing, 20)
                 .padding(.bottom, 12)
         }
@@ -53,10 +53,12 @@ struct ContentView: View {
 private struct ShowcaseHeader: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("Matchbook")
+            Text("app_name_key")
                 .font(.display(size: 32))
                 .foregroundStyle(Color.textPrimary)
-            Text("Design system preview")
+            // Developer-facing showcase subtitle, not product copy — deliberately verbatim
+            // so it never lands in the String Catalog.
+            Text(verbatim: "Design system preview")
                 .font(.ui(size: 15))
                 .foregroundStyle(Color.textMuted)
         }
@@ -64,11 +66,13 @@ private struct ShowcaseHeader: View {
 }
 
 private struct ShowcaseStatsRow: View {
+    // The accessibility labels are the four String Catalog plural keys in live use —
+    // VoiceOver reads "12 турнірів" / "12 tournaments", correctly inflected per locale.
     var body: some View {
         HStack(spacing: 12) {
-            StatPill(value: "12", label: "Tournaments", accessibilityLabel: "12 tournaments")
-            StatPill(value: "34", label: "Goals", accessibilityLabel: "34 goals")
-            StatPill(value: "5", label: "Podiums", highlighted: true, accessibilityLabel: "5 podium finishes")
+            StatPill(value: 12.formatted(), label: "stat_tournaments_key", accessibilityLabel: Counts.tournaments(12))
+            StatPill(value: 34.formatted(), label: "stat_goals_key", accessibilityLabel: Counts.goals(34))
+            StatPill(value: 5.formatted(), label: "stat_podiums_key", highlighted: true, accessibilityLabel: "showcase_podiums_accessibility_key")
         }
     }
 }
@@ -76,15 +80,15 @@ private struct ShowcaseStatsRow: View {
 private struct ShowcasePlacementRow: View {
     var body: some View {
         HStack(spacing: 12) {
-            PlacementBadge(medal: "🥇", label: "Champions")
-            PlacementBadge(medal: "🥈", label: "Finalists")
+            PlacementBadge(medal: "🥇", label: "Чемпіони")
+            PlacementBadge(medal: "🥈", label: "Фіналісти")
         }
     }
 }
 
 private struct ShowcaseCoverPhotoCard: View {
     var body: some View {
-        PhotoPlaceholder(caption: "No Cover Photo")
+        PhotoPlaceholder(caption: "no_cover_photo_key")
             .frame(height: 160)
             .frame(maxWidth: .infinity)
             .cardStyle()
@@ -96,13 +100,13 @@ private struct ShowcaseGoalsCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Goals")
+            Text("stat_goals_key")
                 .font(.ui(size: 13, weight: .semibold, relativeTo: .footnote))
                 .textCase(.uppercase)
                 .foregroundStyle(Color.textMuted)
 
             HStack {
-                Text("\(goals)")
+                Text(goals.formatted())
                     .font(.display(size: 30))
                     .foregroundStyle(Color.textPrimary)
 
@@ -112,8 +116,8 @@ private struct ShowcaseGoalsCard: View {
                     value: $goals,
                     minValue: 0,
                     maxValue: 20,
-                    decreaseAccessibilityLabel: "Decrease goals",
-                    increaseAccessibilityLabel: "Increase goals"
+                    decreaseAccessibilityLabel: "decrease_goals_accessibility_key",
+                    increaseAccessibilityLabel: "increase_goals_accessibility_key"
                 )
                 .frame(width: 110)
             }

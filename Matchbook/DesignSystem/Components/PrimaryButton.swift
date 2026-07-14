@@ -21,10 +21,10 @@ extension ButtonStyle where Self == PrimaryButtonStyle {
 
 #Preview("PrimaryButton") {
     VStack(spacing: 16) {
-        Button("Save Tournament") { }
+        Button("save_tournament_key") { }
             .buttonStyle(.primary)
 
-        Button("Add Match") { }
+        Button("add_match_key") { }
             .buttonStyle(.primary)
     }
     .padding(24)

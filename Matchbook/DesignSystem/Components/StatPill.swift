@@ -5,10 +5,11 @@ import SwiftUI
 /// callers must supply `accessibilityLabel` so VoiceOver announces the highlighted
 /// meaning (e.g. "5 podium finishes") rather than just a color change.
 struct StatPill: View {
+    /// Pre-formatted number — the caller formats it (`.formatted()`), the pill only styles it.
     let value: String
-    let label: String
+    let label: LocalizedStringResource
     var highlighted: Bool = false
-    let accessibilityLabel: String
+    let accessibilityLabel: LocalizedStringResource
 
     var body: some View {
         VStack(spacing: 4) {
@@ -38,15 +39,15 @@ struct StatPill: View {
         }
         .clipShape(.rect(cornerRadius: 16))
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(accessibilityLabel)
+        .accessibilityLabel(Text(accessibilityLabel))
     }
 }
 
 #Preview("StatPill") {
     HStack(spacing: 12) {
-        StatPill(value: "12", label: "Tournaments", accessibilityLabel: "12 tournaments")
-        StatPill(value: "34", label: "Goals", accessibilityLabel: "34 goals")
-        StatPill(value: "5", label: "Podiums", highlighted: true, accessibilityLabel: "5 podium finishes")
+        StatPill(value: 12.formatted(), label: "stat_tournaments_key", accessibilityLabel: Counts.tournaments(12))
+        StatPill(value: 34.formatted(), label: "stat_goals_key", accessibilityLabel: Counts.goals(34))
+        StatPill(value: 5.formatted(), label: "stat_podiums_key", highlighted: true, accessibilityLabel: "showcase_podiums_accessibility_key")
     }
     .padding(24)
     .background(Color.screenBackground)

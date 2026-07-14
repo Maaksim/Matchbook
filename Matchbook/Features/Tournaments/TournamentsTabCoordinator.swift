@@ -13,7 +13,7 @@ final class TournamentsTabCoordinator: Coordinator {
     }
 
     func start() {
-        let view = TabPlaceholderView(title: "Турніри")
+        let view = TabPlaceholderView(title: "tab_tournaments_key")
         navigationController.setViewControllers([UIHostingController(rootView: view)], animated: false)
     }
 }

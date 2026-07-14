@@ -3,7 +3,7 @@ import SwiftUI
 /// Placeholder shown by the Турніри/Профіль tabs until their real screens are built. Shared
 /// so the two tab coordinators don't each carry an identical private copy.
 struct TabPlaceholderView: View {
-    let title: String
+    let title: LocalizedStringResource
 
     var body: some View {
         ZStack {
@@ -12,10 +12,10 @@ struct TabPlaceholderView: View {
                 .font(.display(size: 22))
                 .foregroundStyle(Color.textPrimary)
         }
-        .navigationTitle(title)
+        .navigationTitle(Text(title))
     }
 }
 
 #Preview {
-    TabPlaceholderView(title: "Турніри")
+    TabPlaceholderView(title: "tab_tournaments_key")
 }

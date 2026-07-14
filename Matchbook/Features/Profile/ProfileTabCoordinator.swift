@@ -11,7 +11,7 @@ final class ProfileTabCoordinator: Coordinator {
     }
 
     func start() {
-        let view = TabPlaceholderView(title: "Профіль")
+        let view = TabPlaceholderView(title: "tab_profile_key")
         navigationController.setViewControllers([UIHostingController(rootView: view)], animated: false)
     }
 }

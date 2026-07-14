@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Shown as a full-screen stage by `AppCoordinator` when there's no child yet — before the
-/// tab bar exists. "Додати дитину" calls back to the coordinator (child creation is WP3).
+/// tab bar exists. The "add child" button calls back to the coordinator (child creation is WP3).
 struct WelcomeView: View {
     let onAddChild: () -> Void
 
@@ -32,10 +32,10 @@ extension WelcomeView {
 
     private var textBlock: some View {
         VStack(alignment: .center, spacing: 6) {
-            Text("Вітаємо в Матчбуці")
+            Text("welcome_title_key")
                 .font(.display(size: 26))
                 .foregroundStyle(Color.textPrimary)
-            Text("Створюйте фотоальбом кожного турніру дитини — з голами, місцями й спогадами, які не загубляться.")
+            Text("welcome_subtitle_key")
                 .font(.ui(size: 15))
                 .foregroundStyle(Color.textMuted)
         }
@@ -52,22 +52,23 @@ extension WelcomeView {
 
     private var featureRows: some View {
         VStack(alignment: .leading, spacing: 16) {
-            FeatureRow(imageText: "🏆", text: "Турнір — окремий альбом, не дашборд")
-            FeatureRow(imageText: "🖼️", text: "Фото на першому плані")
-            FeatureRow(imageText: "↗", text: "Картки для чатів команди й сторіз")
+            FeatureRow(imageText: "🏆", text: "welcome_feature_album_key")
+            FeatureRow(imageText: "🖼️", text: "welcome_feature_photos_key")
+            FeatureRow(imageText: "↗", text: "welcome_feature_cards_key")
         }
     }
 
     private var addChildButton: some View {
-        Button("＋ Додати дитину", action: onAddChild)
+        Button("add_child_key", action: onAddChild)
             .buttonStyle(.primary)
             .padding(.vertical, 20)
     }
 }
 
 private struct FeatureRow: View {
+    /// Decorative emoji — not localized, and hidden from VoiceOver by the row's own label.
     let imageText: String
-    let text: String
+    let text: LocalizedStringResource
 
     var body: some View {
         HStack(spacing: 12) {
