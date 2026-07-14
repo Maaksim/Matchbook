@@ -7,44 +7,31 @@ struct WelcomeView: View {
 
     var body: some View {
         ZStack {
-            Color.screenBackground.ignoresSafeArea()
+            Color.screenBackground
+                .ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 24) {
-                        coverTile
-                        textBlock
-                        featureRows
-                    }
-                    .padding(24)
-                }
-
-                Button("＋ Додати дитину", action: onAddChild)
-                    .buttonStyle(.primary)
-                    .padding(.horizontal, 24)
-                    .padding(.vertical, 16)
+            VStack(alignment: .center, spacing: 0) {
+                imageView
+                textBlock
+                featureRowsScrollContainer
+                addChildButton
             }
+            .padding(.top, 50)
+            .padding(.horizontal, 24)
         }
     }
 }
 
 // MARK: - UI components
 extension WelcomeView {
-    private var coverTile: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color.chipTint)
-                .cornerRadius(24)
-            Text("⚽️")
-                .font(.system(size: 52))
-        }
-        .frame(width: 140, height: 140)
-        .frame(maxWidth: .infinity)
-        .clipShape(.rect(cornerRadius: 20))
+    private var imageView: some View {
+        Image(.welcomeBackgroundIcon)
+            .resizable()
+            .frame(width: 140, height: 140)
     }
 
     private var textBlock: some View {
-        VStack(alignment: .center, spacing: 8) {
+        VStack(alignment: .center, spacing: 6) {
             Text("Вітаємо в Матчбуці")
                 .font(.display(size: 26))
                 .foregroundStyle(Color.textPrimary)
@@ -52,6 +39,15 @@ extension WelcomeView {
                 .font(.ui(size: 15))
                 .foregroundStyle(Color.textMuted)
         }
+        .padding(.top, 25)
+    }
+
+
+    private var featureRowsScrollContainer: some View {
+        ScrollView {
+            featureRows
+        }
+        .padding(.vertical, 24)
     }
 
     private var featureRows: some View {
@@ -60,6 +56,12 @@ extension WelcomeView {
             FeatureRow(imageText: "🖼️", text: "Фото на першому плані")
             FeatureRow(imageText: "↗", text: "Картки для чатів команди й сторіз")
         }
+    }
+
+    private var addChildButton: some View {
+        Button("＋ Додати дитину", action: onAddChild)
+            .buttonStyle(.primary)
+            .padding(.vertical, 20)
     }
 }
 
