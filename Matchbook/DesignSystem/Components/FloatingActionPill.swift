@@ -4,7 +4,7 @@ import SwiftUI
 /// The label and the "+" glyph are a single `Button` so VoiceOver treats them as one
 /// control announcing the action name, not two disconnected elements.
 struct FloatingActionPill: View {
-    let actionName: String
+    let actionName: LocalizedStringResource
     let action: () -> Void
 
     var body: some View {
@@ -19,7 +19,7 @@ struct FloatingActionPill: View {
         .buttonStyle(.plain)
         .shadow(color: .black.opacity(0.18), radius: 10, x: 0, y: 6)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(actionName)
+        .accessibilityLabel(Text(actionName))
         .accessibilityAddTraits(.isButton)
     }
 }
@@ -29,7 +29,7 @@ struct FloatingActionPill: View {
         Color.screenBackground.ignoresSafeArea()
     }
     .overlay(alignment: .bottomTrailing) {
-        FloatingActionPill(actionName: "Add Match") { }
+        FloatingActionPill(actionName: "add_match_key") { }
             .padding(24)
     }
 }

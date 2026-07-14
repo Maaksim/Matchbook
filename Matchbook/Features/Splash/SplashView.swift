@@ -29,17 +29,17 @@ extension SplashView {
 
     private var aboutTextView: some View {
         VStack(spacing: 6) {
-            Text("Матчбук")
+            Text("app_name_key")
                 .font(.display(size: 28))
                 .foregroundStyle(Color.white)
-            Text("Турніри, які не забудуться")
+            Text("splash_tagline_key")
                 .font(.ui(size: 15))
                 .foregroundStyle(Color.white.opacity(0.85))
         }
     }
 
     private var supportTextView: some View {
-        Text("дитячий футбол · спогади")
+        Text("splash_footer_key")
             .font(.ui(size: 12, weight: .medium))
             .foregroundStyle(Color.white.opacity(0.7))
             .padding(.bottom, 32)

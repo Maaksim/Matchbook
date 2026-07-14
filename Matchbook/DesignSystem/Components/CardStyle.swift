@@ -17,13 +17,22 @@ extension View {
     }
 }
 
+/// Sample tournament dates for the preview. A date range is *formatted*, never concatenated:
+/// `.interval` renders "12–14 черв." in Ukrainian and "Jun 12 – 14" in English off the same
+/// call, which a hand-built string could never do (see `Localization.swift`, rule 3).
+private var sampleTournamentDates: Range<Date> {
+    let start = Date.now
+    return start ..< start.addingTimeInterval(2 * 24 * 60 * 60)
+}
+
 #Preview("CardStyle") {
     VStack(spacing: 16) {
         VStack(alignment: .leading, spacing: 6) {
-            Text("Regional Cup")
+            // A tournament name is user-entered content — verbatim, never localized (rule 4).
+            Text(verbatim: "Кубок регіону")
                 .font(.display(size: 20))
                 .foregroundStyle(Color.textPrimary)
-            Text("June 12 – June 14")
+            Text(sampleTournamentDates.formatted(.interval.day().month(.abbreviated)))
                 .font(.ui(size: 13))
                 .foregroundStyle(Color.textMuted)
         }
@@ -31,7 +40,7 @@ extension View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .cardStyle()
 
-        Text("Small radius card")
+        Text(verbatim: "Small radius card")
             .font(.ui(size: 15))
             .padding(20)
             .frame(maxWidth: .infinity, alignment: .leading)

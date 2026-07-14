@@ -5,7 +5,7 @@ import SwiftUI
 /// photo/cover slot (tournament cover, match gallery, avatar) — size is entirely
 /// driven by the caller's frame.
 struct PhotoPlaceholder: View {
-    var caption: String = "No Photo"
+    var caption: LocalizedStringResource = "no_photo_key"
 
     private let stripeColorA = Color(red: 0xD7 / 255, green: 0xE6 / 255, blue: 0xD2 / 255)
     private let stripeColorB = Color(red: 0xE2 / 255, green: 0xEC / 255, blue: 0xDD / 255)
@@ -40,11 +40,11 @@ struct PhotoPlaceholder: View {
 
 #Preview("PhotoPlaceholder") {
     VStack(spacing: 16) {
-        PhotoPlaceholder(caption: "No Cover Photo")
+        PhotoPlaceholder(caption: "no_cover_photo_key")
             .frame(height: 160)
             .clipShape(.rect(cornerRadius: 20))
 
-        PhotoPlaceholder(caption: "No Photo")
+        PhotoPlaceholder(caption: "no_photo_key")
             .frame(width: 100, height: 100)
             .clipShape(.rect(cornerRadius: 13))
     }

@@ -6,11 +6,11 @@ enum PlayerPosition: String, Codable, CaseIterable {
 
     var title: LocalizedStringResource {
         switch self {
-        case .goalkeeper: "Воротар"
-        case .defender:   "Захисник"
-        case .midfielder: "Півзахисник"
-        case .forward:    "Нападник"
-        case .unknown:    "—"
+        case .goalkeeper: "position_goalkeeper_key"
+        case .defender:   "position_defender_key"
+        case .midfielder: "position_midfielder_key"
+        case .forward:    "position_forward_key"
+        case .unknown:    "position_unknown_key"
         }
     }
 }

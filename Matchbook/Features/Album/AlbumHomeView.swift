@@ -11,10 +11,14 @@ struct AlbumHomeView: View {
             Color.screenBackground.ignoresSafeArea()
 
             VStack(spacing: 8) {
-                Text("Вітаємо, \(player.name)!")
+                // A semantic key with an argument can't be a bare `Text("key")` — the
+                // interpolation has to ride on `defaultValue`, which supplies %@ while the
+                // shipped copy still comes from the catalog. `player.name` is user-entered
+                // and passes through untranslated.
+                Text(LocalizedStringResource("album_greeting_key", defaultValue: "Вітаємо, \(player.name)!"))
                     .font(.display(size: 24))
                     .foregroundStyle(Color.textPrimary)
-                Text("Домашній екран з'явиться в наступному пакеті.")
+                Text("album_home_placeholder_key")
                     .font(.ui(size: 14))
                     .foregroundStyle(Color.textMuted)
             }

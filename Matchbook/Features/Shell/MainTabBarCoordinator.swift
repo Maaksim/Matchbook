@@ -15,23 +15,25 @@ final class MainTabBarCoordinator {
     }
 
     func start() {
+        // UITabBarItem takes a plain String, so the catalog is resolved eagerly here via
+        // String(localized:) rather than passed along as a LocalizedStringResource.
         let albumNavigationController = UINavigationController()
         albumNavigationController.tabBarItem = UITabBarItem(
-            title: "Альбом",
+            title: String(localized: "tab_album_key"),
             image: UIImage(resource: .iconTabAlbum),
             tag: 0
         )
 
         let tournamentsNavigationController = UINavigationController()
         tournamentsNavigationController.tabBarItem = UITabBarItem(
-            title: "Турніри",
+            title: String(localized: "tab_tournaments_key"),
             image: UIImage(resource: .iconTabTournament),
             tag: 1
         )
 
         let profileNavigationController = UINavigationController()
         profileNavigationController.tabBarItem = UITabBarItem(
-            title: "Профіль",
+            title: String(localized: "tab_profile_key"),
             image: UIImage(resource: .iconTabProfile),
             tag: 2
         )

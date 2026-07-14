@@ -10,11 +10,11 @@ enum TournamentFormat: String, Codable, CaseIterable {
 
     var title: LocalizedStringResource {
         switch self {
-        case .league:             "Кругова"
-        case .knockout:           "Плей-оф"
-        case .groupPlusKnockout:  "Групи + плей-оф"
-        case .friendly:           "Товариський"
-        case .other:              "Інше"
+        case .league:             "format_league_key"
+        case .knockout:           "format_knockout_key"
+        case .groupPlusKnockout:  "format_group_plus_knockout_key"
+        case .friendly:           "format_friendly_key"
+        case .other:              "format_other_key"
         }
     }
 }

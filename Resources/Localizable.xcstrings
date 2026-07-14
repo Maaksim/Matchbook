@@ -1,0 +1,834 @@
+{
+  "sourceLanguage" : "uk",
+  "strings" : {
+    "add_child_key" : {
+      "comment" : "Welcome screen — primary button. Creates the first child profile.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "＋ Add child"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "＋ Додати дитину"
+          }
+        }
+      }
+    },
+    "add_match_key" : {
+      "comment" : "Button — add a match.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add match"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати матч"
+          }
+        }
+      }
+    },
+    "add_tournament_key" : {
+      "comment" : "Button — add a tournament.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add tournament"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати турнір"
+          }
+        }
+      }
+    },
+    "album_greeting_key" : {
+      "comment" : "Album home — greeting. %@ is the child's name (user-generated, never localized).",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome, %@!"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вітаємо, %@!"
+          }
+        }
+      }
+    },
+    "album_home_placeholder_key" : {
+      "comment" : "Album home placeholder — WP1 scaffold copy, replaced by the real album in WP4.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The home screen arrives in the next work package."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Домашній екран з'явиться в наступному пакеті."
+          }
+        }
+      }
+    },
+    "app_name_key" : {
+      "comment" : "The app's wordmark — transliterated, not translated.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matchbook"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Матчбук"
+          }
+        }
+      }
+    },
+    "assists_count_key" : {
+      "comment" : "Number of assists made. uk: one/few/many; en: one/other. Resolved via Counts.assists(_:).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld assist"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld assists"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld асисти"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld асистів"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld асист"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld асистів"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "decrease_goals_accessibility_key" : {
+      "comment" : "Accessibility label — stepper's decrement button.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decrease goals"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зменшити кількість голів"
+          }
+        }
+      }
+    },
+    "format_friendly_key" : {
+      "comment" : "TournamentFormat.friendly",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Friendly"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Товариський"
+          }
+        }
+      }
+    },
+    "format_group_plus_knockout_key" : {
+      "comment" : "TournamentFormat.groupPlusKnockout",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Groups + knockout"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Групи + плей-оф"
+          }
+        }
+      }
+    },
+    "format_knockout_key" : {
+      "comment" : "TournamentFormat.knockout",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Knockout"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Плей-оф"
+          }
+        }
+      }
+    },
+    "format_league_key" : {
+      "comment" : "TournamentFormat.league — round robin / group stage.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Round robin"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кругова"
+          }
+        }
+      }
+    },
+    "format_other_key" : {
+      "comment" : "TournamentFormat.other",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Інше"
+          }
+        }
+      }
+    },
+    "goals_count_key" : {
+      "comment" : "Number of goals scored. uk: one/few/many; en: one/other. Resolved via Counts.goals(_:).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld goal"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld goals"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld голи"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld голів"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld гол"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld голів"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "increase_goals_accessibility_key" : {
+      "comment" : "Accessibility label — stepper's increment button.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Increase goals"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Збільшити кількість голів"
+          }
+        }
+      }
+    },
+    "matches_count_key" : {
+      "comment" : "Number of matches played. uk: one/few/many; en: one/other. Resolved via Counts.matches(_:).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld match"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld matches"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld матчі"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld матчів"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld матч"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld матчів"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "no_cover_photo_key" : {
+      "comment" : "Empty cover-photo slot.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No cover photo"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Немає обкладинки"
+          }
+        }
+      }
+    },
+    "no_photo_key" : {
+      "comment" : "Empty photo slot.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No photo"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Немає фото"
+          }
+        }
+      }
+    },
+    "placement_accessibility_key" : {
+      "comment" : "Accessibility label — the placement badge. Its value is the placement text itself (user-entered).",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Placement"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Місце"
+          }
+        }
+      }
+    },
+    "position_defender_key" : {
+      "comment" : "PlayerPosition.defender",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defender"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Захисник"
+          }
+        }
+      }
+    },
+    "position_forward_key" : {
+      "comment" : "PlayerPosition.forward",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forward"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нападник"
+          }
+        }
+      }
+    },
+    "position_goalkeeper_key" : {
+      "comment" : "PlayerPosition.goalkeeper",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goalkeeper"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Воротар"
+          }
+        }
+      }
+    },
+    "position_midfielder_key" : {
+      "comment" : "PlayerPosition.midfielder",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midfielder"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Півзахисник"
+          }
+        }
+      }
+    },
+    "position_unknown_key" : {
+      "comment" : "PlayerPosition.unknown — no position recorded.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "—"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "—"
+          }
+        }
+      }
+    },
+    "save_tournament_key" : {
+      "comment" : "Button — save the tournament being edited.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save tournament"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зберегти турнір"
+          }
+        }
+      }
+    },
+    "showcase_podiums_accessibility_key" : {
+      "comment" : "Accessibility label for the podium stat pill in the design-system showcase.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 podium finishes"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 призових місць"
+          }
+        }
+      }
+    },
+    "splash_footer_key" : {
+      "comment" : "Splash screen — footer tagline.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "youth football · memories"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "дитячий футбол · спогади"
+          }
+        }
+      }
+    },
+    "splash_tagline_key" : {
+      "comment" : "Splash screen — tagline under the wordmark.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tournaments worth remembering"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Турніри, які не забудуться"
+          }
+        }
+      }
+    },
+    "stat_goals_key" : {
+      "comment" : "Stat pill label — goals scored.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goals"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Голи"
+          }
+        }
+      }
+    },
+    "stat_podiums_key" : {
+      "comment" : "Stat pill label — top-three finishes.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podiums"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подіуми"
+          }
+        }
+      }
+    },
+    "stat_tournaments_key" : {
+      "comment" : "Stat pill label — tournaments played. Separate from tab_tournaments_key so the two can diverge.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tournaments"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Турніри"
+          }
+        }
+      }
+    },
+    "tab_album_key" : {
+      "comment" : "Tab bar — the photo album / home tab.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Album"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Альбом"
+          }
+        }
+      }
+    },
+    "tab_profile_key" : {
+      "comment" : "Tab bar — the profile tab.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профіль"
+          }
+        }
+      }
+    },
+    "tab_tournaments_key" : {
+      "comment" : "Tab bar — the tournaments tab.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tournaments"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Турніри"
+          }
+        }
+      }
+    },
+    "tournaments_count_key" : {
+      "comment" : "Number of tournaments played. uk: one/few/many; en: one/other. Resolved via Counts.tournaments(_:).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld tournament"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld tournaments"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld турніри"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld турнірів"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld турнір"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld турнірів"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "welcome_feature_album_key" : {
+      "comment" : "Welcome screen — feature row 1.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A tournament is its own album, not a dashboard"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Турнір — окремий альбом, не дашборд"
+          }
+        }
+      }
+    },
+    "welcome_feature_cards_key" : {
+      "comment" : "Welcome screen — feature row 3.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cards built for team chats and stories"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Картки для чатів команди й сторіз"
+          }
+        }
+      }
+    },
+    "welcome_feature_photos_key" : {
+      "comment" : "Welcome screen — feature row 2.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photos come first"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фото на першому плані"
+          }
+        }
+      }
+    },
+    "welcome_subtitle_key" : {
+      "comment" : "Welcome screen — subtitle.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build a photo album for every tournament your child plays — the goals, the placements and the memories, all in one place."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Створюйте фотоальбом кожного турніру дитини — з голами, місцями й спогадами, які не загубляться."
+          }
+        }
+      }
+    },
+    "welcome_title_key" : {
+      "comment" : "Welcome screen — headline.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to Matchbook"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вітаємо в Матчбуці"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

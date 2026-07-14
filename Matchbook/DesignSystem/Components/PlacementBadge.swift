@@ -1,9 +1,14 @@
 import SwiftUI
 
-/// Pill with a medal emoji and a placement label (e.g. "Champions"), gold gradient
+/// Pill with a medal emoji and a placement label (e.g. "Чемпіони"), gold gradient
 /// background, dark gold text. The emoji is decorative to VoiceOver; the label is
-/// exposed as the accessibility value so it reads "Placement, Champions" instead of
+/// exposed as the accessibility value so it reads "Місце, Чемпіони" instead of
 /// speaking the emoji glyph.
+///
+/// `label` is deliberately a plain `String`, not a `LocalizedStringResource`: it renders
+/// `Tournament.placementLabel`, which is user-entered content and passes through untouched
+/// in any locale (see `Localization.swift`, rule 4). Only the badge's own accessibility
+/// label — the word "Місце" — is localized.
 struct PlacementBadge: View {
     let medal: String
     let label: String
@@ -25,16 +30,16 @@ struct PlacementBadge: View {
         }
         .clipShape(Capsule())
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("Placement")
+        .accessibilityLabel(Text("placement_accessibility_key"))
         .accessibilityValue(label)
     }
 }
 
 #Preview("PlacementBadge") {
     VStack(spacing: 12) {
-        PlacementBadge(medal: "🥇", label: "Champions")
-        PlacementBadge(medal: "🥈", label: "Finalists")
-        PlacementBadge(medal: "🥉", label: "3rd Place")
+        PlacementBadge(medal: "🥇", label: "Чемпіони")
+        PlacementBadge(medal: "🥈", label: "Фіналісти")
+        PlacementBadge(medal: "🥉", label: "3-тє місце")
     }
     .padding(24)
     .background(Color.screenBackground)
