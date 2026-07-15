@@ -1,5 +1,6 @@
 import PhotosUI
 import SwiftUI
+import UIKit
 
 /// The child-profile form, presented as a native sheet by `PlayerCoordinator` for both
 /// creating and editing a `Player`. All form state lives in `PlayerEditViewModel` — the only
@@ -12,8 +13,17 @@ struct PlayerEditView: View {
     @FocusState private var focusedField: Field?
     @State private var isConfirmingDelete = false
 
+    // Avatar source flow: tapping the avatar offers Camera / Gallery, each of which then presents its own transient system picker. Local `@State` because it's purely presentational — the picked photo itself lives in the ViewModel.
+    @State private var isChoosingPhotoSource = false
+    @State private var isShowingCamera = false
+    @State private var isShowingLibrary = false
+
     private enum Field: Hashable {
         case name, shirtNumber, club
+    }
+
+    private var isCameraAvailable: Bool {
+        UIImagePickerController.isSourceTypeAvailable(.camera)
     }
 
     var body: some View {
@@ -28,6 +38,19 @@ struct PlayerEditView: View {
         .task(id: viewModel.photoItem) {
             await viewModel.loadPickedPhoto()
         }
+        .photoSourceModifier(
+            title: "player_add_photo_key",
+            isChoosingPhotoSource: $isChoosingPhotoSource,
+            isShowingCamera: $isShowingCamera,
+            isShowingLibrary: $isShowingLibrary,
+            isCameraAvailable: isCameraAvailable,
+            photoItem: $viewModel.photoItem,
+            onCapture: { data in
+                Task {
+                    await viewModel.setCapturedPhoto(data)
+                }
+            }
+        )
         .alert(deleteConfirmationTitle,
                isPresented: $isConfirmingDelete) {
             deleteAlertConfirmButton
@@ -135,13 +158,17 @@ extension PlayerEditView {
     }
 
     private var photoPicker: some View {
-        // `PhotosPicker`'s label closure is `@Sendable`, so reaching back into this
-        // main-actor-isolated View from inside it is a concurrency violation. Read the photo
-        // out here and let the closure capture the `Data` (which *is* Sendable) instead.
-        let avatarData = viewModel.avatarData
-
-        return PhotosPicker(selection: $viewModel.photoItem, matching: .images, photoLibrary: .shared()) {
-            AvatarThumbnail(avatarData: avatarData)
+        // Opens the Camera/Gallery chooser. When there's no camera (the Simulator), the choice
+        // is moot, so go straight to the library. The actual pickers are wired by
+        // `AvatarSourceModifier` on the body.
+        Button {
+            if isCameraAvailable {
+                isChoosingPhotoSource = true
+            } else {
+                isShowingLibrary = true
+            }
+        } label: {
+            AvatarThumbnail(avatarData: viewModel.avatarData)
         }
         .accessibilityLabel(Text("player_avatar_accessibility_key"))
     }

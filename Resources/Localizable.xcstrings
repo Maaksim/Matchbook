@@ -608,6 +608,23 @@
         }
       }
     },
+    "player_choose_from_library_key" : {
+      "comment" : "Avatar source chooser — pick an existing photo from the library.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose from library"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обрати з галереї"
+          }
+        }
+      }
+    },
     "player_choose_key" : {
       "comment" : "Value shown in a picker row that has no selection yet.",
       "localizations" : {
@@ -910,6 +927,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ПОЗИЦІЯ"
+          }
+        }
+      }
+    },
+    "player_take_photo_key" : {
+      "comment" : "Avatar source chooser — capture a new photo with the camera.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take photo"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зробити фото"
           }
         }
       }

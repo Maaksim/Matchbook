@@ -163,9 +163,9 @@ struct LocalizationTests {
             ("stat_goals_key", "Голи", "Goals"),
             ("position_goalkeeper_key", "Воротар", "Goalkeeper"),
             ("format_league_key", "Кругова", "Round robin"),
-            ("player_new_title_key", "Нова дитина", "New child"),
-            ("player_edit_title_key", "Редагувати дитину", "Edit child"),
-            ("player_delete_key", "Видалити дитину", "Delete child"),
+            ("player_new_title_key", "Додати", "Add"),
+            ("player_edit_title_key", "Редагувати", "Edit"),
+            ("player_delete_key", "Видалити", "Delete"),
             ("cancel_key", "Скасувати", "Cancel"),
         ]
     )

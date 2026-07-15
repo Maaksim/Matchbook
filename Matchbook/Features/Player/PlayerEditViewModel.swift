@@ -133,6 +133,13 @@ final class PlayerEditViewModel {
         avatarData = await Self.compressedAvatar(from: original)
     }
 
+    /// Stores a photo captured with the camera. `CameraPicker` hands us JPEG `Data`, which runs
+    /// through the exact same downscale/encode path as the library picker before it lands in
+    /// `avatarData`.
+    func setCapturedPhoto(_ data: Data) async {
+        avatarData = await Self.compressedAvatar(from: data)
+    }
+
     func save() async {
         guard canSave else { return }
         isSaving = true
