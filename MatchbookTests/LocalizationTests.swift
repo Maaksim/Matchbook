@@ -76,6 +76,34 @@ struct LocalizationTests {
         #expect(localized(.tournaments, count, in: bundle, locale: locale) == tournaments)
     }
 
+    /// Photos get their own test because Ukrainian "фото" is indeclinable — 1 фото / 2 фото /
+    /// 5 фото — so all three uk categories carry identical text. That's exactly why it still has
+    /// to go through the catalog rather than interpolation: English *does* inflect, and only the
+    /// plural entry can express both at once. The delete confirmation depends on this.
+    @Test(
+        "Photo counts pluralize per language",
+        arguments: [
+            (1, "1 фото", "1 photo"),
+            (2, "2 фото", "2 photos"),
+            (5, "5 фото", "5 photos"),
+            (0, "0 фото", "0 photos"),
+            (21, "21 фото", "21 photos"),
+        ]
+    )
+    func photoPlurals(count: Int, ukrainian: String, english: String) throws {
+        let uk = try lproj("uk")
+        let en = try lproj("en")
+
+        #expect(
+            String(localized: "photos_count_key", defaultValue: "\(count)",
+                   bundle: uk, locale: Locale(identifier: "uk")) == ukrainian
+        )
+        #expect(
+            String(localized: "photos_count_key", defaultValue: "\(count)",
+                   bundle: en, locale: Locale(identifier: "en")) == english
+        )
+    }
+
     /// `Counts` is the only sanctioned way to build a count string, so it must point at the
     /// catalog keys the tests above exercise. If someone renames a key in the catalog without
     /// updating the helper (or vice versa), this fails rather than silently shipping a raw key.
@@ -85,6 +113,7 @@ struct LocalizationTests {
         #expect(Counts.assists(3).key == "assists_count_key")
         #expect(Counts.matches(3).key == "matches_count_key")
         #expect(Counts.tournaments(3).key == "tournaments_count_key")
+        #expect(Counts.photos(3).key == "photos_count_key")
     }
 
     // MARK: - Catalog wiring
@@ -134,6 +163,10 @@ struct LocalizationTests {
             ("stat_goals_key", "Голи", "Goals"),
             ("position_goalkeeper_key", "Воротар", "Goalkeeper"),
             ("format_league_key", "Кругова", "Round robin"),
+            ("player_new_title_key", "Додати", "Add"),
+            ("player_edit_title_key", "Редагувати", "Edit"),
+            ("player_delete_key", "Видалити", "Delete"),
+            ("cancel_key", "Скасувати", "Cancel"),
         ]
     )
     func keysResolveToExpectedCopy(key: String, ukrainian: String, english: String) throws {

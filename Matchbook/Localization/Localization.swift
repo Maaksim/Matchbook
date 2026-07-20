@@ -95,4 +95,15 @@ enum Counts {
             comment: "Number of tournaments played. uk: one/few/many; en: one/other."
         )
     }
+
+    /// Ukrainian "фото" is indeclinable — 1 фото / 2 фото / 5 фото — so all three uk variations
+    /// carry the same text. It still goes through the plural key rather than interpolation:
+    /// English does inflect (1 photo / 2 photos), and only the catalog can express both.
+    static func photos(_ count: Int) -> LocalizedStringResource {
+        LocalizedStringResource(
+            "photos_count_key",
+            defaultValue: "\(count) фото",
+            comment: "Number of photos. uk: one/few/many (identical); en: one/other."
+        )
+    }
 }

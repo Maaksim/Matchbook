@@ -1,6 +1,5 @@
 import Foundation
 import Observation
-import SwiftUI
 
 /// Resolves the launch-time routing decision (Splash → Empty/Home) for `AppCoordinator`:
 /// reads the persisted players and the active-child selection, with no UI state of its own.
@@ -11,9 +10,6 @@ final class LaunchViewModel {
         case empty
         case home(Player)
     }
-
-    @ObservationIgnored
-    @AppStorage("activePlayerID") private var activePlayerIDString: String = ""
 
     private let repository: PlayerRepository
 
@@ -28,10 +24,10 @@ final class LaunchViewModel {
             return .empty
         }
 
-        if !players.contains(where: { $0.id.uuidString == activePlayerIDString }) {
-            activePlayerIDString = firstPlayer.id.uuidString
-        }
-        let activePlayer = players.first { $0.id.uuidString == activePlayerIDString } ?? firstPlayer
+        // A stale pointer (the child it named was deleted on another device, say) falls back to
+        // the first child and is re-persisted, so the two never disagree after a launch.
+        let activePlayer = players.first { $0.id == ActivePlayerStore.id } ?? firstPlayer
+        ActivePlayerStore.id = activePlayer.id
         return .home(activePlayer)
     }
 }

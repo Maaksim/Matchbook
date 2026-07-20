@@ -5,6 +5,12 @@ import UIKit
 final class MainTabBarCoordinator {
     let tabBarController = UITabBarController()
 
+    /// The active child was deleted from inside the tab bar. The payload is whoever is active
+    /// now, or `nil` when none remain. Handled by `AppCoordinator`, which owns the stages — the
+    /// whole tab bar is scoped to one child, so it has to be rebuilt (or torn down for the
+    /// Welcome stage) rather than patched in place.
+    var onActivePlayerChanged: ((Player?) -> Void)?
+
     private let repositories: Repositories
     private let activePlayer: Player
     private var childCoordinators: [Coordinator] = []
@@ -49,6 +55,9 @@ final class MainTabBarCoordinator {
             repositories: repositories,
             player: activePlayer
         )
+        albumCoordinator.onActivePlayerChanged = { [weak self] player in
+            self?.onActivePlayerChanged?(player)
+        }
         let tournamentsCoordinator = TournamentsTabCoordinator(navigationController: tournamentsNavigationController)
         let profileCoordinator = ProfileTabCoordinator(navigationController: profileNavigationController)
 

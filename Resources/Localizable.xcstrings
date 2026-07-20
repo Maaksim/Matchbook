@@ -52,6 +52,23 @@
         }
       }
     },
+    "album_edit_child_key" : {
+      "comment" : "Album home placeholder — opens the child edit sheet.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit child"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редагувати дитину"
+          }
+        }
+      }
+    },
     "album_greeting_key" : {
       "comment" : "Album home — greeting. %@ is the child's name (user-generated, never localized).",
       "localizations" : {
@@ -157,6 +174,23 @@
         }
       }
     },
+    "cancel_key" : {
+      "comment" : "Generic dismiss action in a modal header.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати"
+          }
+        }
+      }
+    },
     "decrease_goals_accessibility_key" : {
       "comment" : "Accessibility label — stepper's decrement button.",
       "localizations" : {
@@ -170,6 +204,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Зменшити кількість голів"
+          }
+        }
+      }
+    },
+    "error_title_key" : {
+      "comment" : "Generic error alert title.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помилка"
           }
         }
       }
@@ -418,6 +469,77 @@
         }
       }
     },
+    "ok_key" : {
+      "comment" : "Generic alert acknowledgement.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "photos_count_key" : {
+      "comment" : "Number of photos. uk: one/few/many (all identical — 'фото' is indeclinable); en: one/other. Resolved via Counts.photos(_:).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld photo"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld photos"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld фото"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld фото"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld фото"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld фото"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "placement_accessibility_key" : {
       "comment" : "Accessibility label — the placement badge. Its value is the placement text itself (user-entered).",
       "localizations" : {
@@ -431,6 +553,397 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Місце"
+          }
+        }
+      }
+    },
+    "player_add_action_key" : {
+      "comment" : "Player edit sheet — confirm action when creating.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати"
+          }
+        }
+      }
+    },
+    "player_add_photo_key" : {
+      "comment" : "Player edit sheet — caption under the avatar picker.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add photo"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати фото"
+          }
+        }
+      }
+    },
+    "player_avatar_accessibility_key" : {
+      "comment" : "VoiceOver label for the avatar picker button.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Child photo"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фото дитини"
+          }
+        }
+      }
+    },
+    "player_choose_from_library_key" : {
+      "comment" : "Avatar source chooser — pick an existing photo from the library.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose from library"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обрати з галереї"
+          }
+        }
+      }
+    },
+    "player_choose_key" : {
+      "comment" : "Value shown in a picker row that has no selection yet.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оберіть"
+          }
+        }
+      }
+    },
+    "player_clear_birth_date_accessibility_key" : {
+      "comment" : "VoiceOver label for the button that unsets the birth date.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear birth date"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистити дату народження"
+          }
+        }
+      }
+    },
+    "player_delete_confirm_action_key" : {
+      "comment" : "Delete confirmation — destructive confirm button.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видалити"
+          }
+        }
+      }
+    },
+    "player_delete_confirm_message_key" : {
+      "comment" : "Delete confirmation message. %1$@ is the child's name (user-generated, never localized); %2$@ is a tournament count from Counts.tournaments(_:); %3$@ is a photo count from Counts.photos(_:).",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete %1$@ along with %2$@ and %3$@? This cannot be undone."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видалити %1$@ та %2$@, %3$@? Це незворотно."
+          }
+        }
+      }
+    },
+    "player_delete_error_key" : {
+      "comment" : "Alert message when deleting a child fails.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't delete the child. Please try again."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося видалити дитину. Спробуйте ще раз."
+          }
+        }
+      }
+    },
+    "player_delete_key" : {
+      "comment" : "Player edit sheet — destructive action that deletes the child.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видалити"
+          }
+        }
+      }
+    },
+    "player_edit_title_key" : {
+      "comment" : "Player edit sheet — title when editing a child.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редагувати"
+          }
+        }
+      }
+    },
+    "player_field_birth_date_key" : {
+      "comment" : "Player edit sheet — birth date row label.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birth date"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата народження"
+          }
+        }
+      }
+    },
+    "player_field_club_key" : {
+      "comment" : "Player edit sheet — club field label.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Club"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Клуб"
+          }
+        }
+      }
+    },
+    "player_field_name_key" : {
+      "comment" : "Player edit sheet — name field label.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ім'я"
+          }
+        }
+      }
+    },
+    "player_field_number_key" : {
+      "comment" : "Player edit sheet — shirt number field label.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Номер"
+          }
+        }
+      }
+    },
+    "player_name_prompt_key" : {
+      "comment" : "Player edit sheet — name field placeholder.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Child's name"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ім'я дитини"
+          }
+        }
+      }
+    },
+    "player_new_title_key" : {
+      "comment" : "Player edit sheet — title when creating a child.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати"
+          }
+        }
+      }
+    },
+    "player_optional_key" : {
+      "comment" : "Placeholder for an optional form field.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необов'язково"
+          }
+        }
+      }
+    },
+    "player_save_action_key" : {
+      "comment" : "Player edit sheet — confirm action when editing.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зберегти"
+          }
+        }
+      }
+    },
+    "player_save_error_key" : {
+      "comment" : "Alert message when saving a child fails.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't save the changes. Please try again."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося зберегти зміни. Спробуйте ще раз."
+          }
+        }
+      }
+    },
+    "player_section_details_key" : {
+      "comment" : "Player edit sheet — section header above the birth-date row.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DETAILS"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ДЕТАЛІ"
+          }
+        }
+      }
+    },
+    "player_section_position_key" : {
+      "comment" : "Player edit sheet — section header above the position picker.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POSITION"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОЗИЦІЯ"
+          }
+        }
+      }
+    },
+    "player_take_photo_key" : {
+      "comment" : "Avatar source chooser — capture a new photo with the camera.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take photo"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зробити фото"
           }
         }
       }
@@ -522,6 +1035,7 @@
     },
     "save_tournament_key" : {
       "comment" : "Button — save the tournament being edited.",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

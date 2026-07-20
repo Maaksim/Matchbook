@@ -15,6 +15,7 @@ final class AppCoordinator {
     private let repositories: Repositories
     private let launchViewModel: LaunchViewModel
     private var mainTabBarCoordinator: MainTabBarCoordinator?
+    private var playerCoordinator: PlayerCoordinator?
 
     /// Keeps the Splash up for at least this long so a fast launch still reads as an
     /// intentional brand moment rather than a flash.
@@ -47,25 +48,45 @@ final class AppCoordinator {
     private func show(_ destination: LaunchViewModel.Destination) {
         switch destination {
         case .empty:
-            let welcome = WelcomeBuilder.make(onAddChild: { [weak self] in self?.addChild() })
-            rootViewController.setContent(welcome, animated: true)
+            showWelcome()
         case .home(let player):
             showMainApp(activePlayer: player)
         }
     }
 
+    private func showWelcome() {
+        let welcome = WelcomeBuilder.make(onAddChild: { [weak self] in self?.addChild() })
+        rootViewController.setContent(welcome, animated: true)
+    }
+
     private func showMainApp(activePlayer: Player) {
         let coordinator = MainTabBarCoordinator(repositories: repositories,
                                                 activePlayer: activePlayer)
+        // The tab bar is built around one child, so a change of active child rebuilds it —
+        // which is also the only way back to the Welcome stage once the last child is deleted.
+        coordinator.onActivePlayerChanged = { [weak self] player in
+            guard let self else { return }
+            if let player {
+                showMainApp(activePlayer: player)
+            } else {
+                showWelcome()
+            }
+        }
         coordinator.start()
         mainTabBarCoordinator = coordinator
         rootViewController.setContent(coordinator.tabBarController, animated: true)
     }
 
+    /// Welcome's "Додати дитину": the first child is created over the Welcome stage, before any
+    /// tab bar exists, so `AppCoordinator` presents the flow itself. Saving makes the new child
+    /// active (`PlayerCoordinator` moves the pointer) and swaps Welcome for the main app.
     private func addChild() {
-        // Welcome's "Додати дитину" — the child-creation flow arrives in WP3. Once it exists,
-        // create the Player through repositories.player and then call
-        // showMainApp(activePlayer:) to swap the Welcome stage for the main tab bar.
-        print("AppCoordinator: onAddChild tapped (child-creation flow arrives in WP3)")
+        let coordinator = PlayerCoordinator(presenter: rootViewController,
+                                            repositories: repositories)
+        coordinator.onSaved = { [weak self] player in
+            self?.showMainApp(activePlayer: player)
+        }
+        playerCoordinator = coordinator
+        coordinator.presentCreate()
     }
 }

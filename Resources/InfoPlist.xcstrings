@@ -1,0 +1,24 @@
+{
+  "sourceLanguage" : "uk",
+  "strings" : {
+    "NSCameraUsageDescription" : {
+      "comment" : "Permission prompt shown when the parent taps “Take photo” for a child's avatar.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matchbook uses the camera to take a profile photo of your child."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Матчбук використовує камеру, щоб зробити фото дитини для профілю."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

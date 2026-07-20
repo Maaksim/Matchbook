@@ -24,6 +24,9 @@ extension Color {
     static let drawChipText = Color("drawChipText")
 
     static let successToggle = Color("successToggle")
+
+    /// Destructive actions only (delete a child/tournament/match, and their confirmations).
+    static let destructive = Color("destructive")
 }
 
 extension LinearGradient {

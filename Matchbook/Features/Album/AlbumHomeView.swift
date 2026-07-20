@@ -3,8 +3,13 @@ import SwiftUI
 /// Placeholder for the Альбом tab's home screen — replaced by the real album/home UI in WP4.
 /// Always receives the resolved active child (the no-child case is handled upstream by the
 /// Welcome stage), so it takes a plain `Player`.
+///
+/// The "edit child" button is a stand-in too: WP3's edit/delete sheet needs an entry point and
+/// the real one (the hero header, per tech doc §4.3) doesn't exist until WP4. WP4 replaces the
+/// button, not the `onEditPlayer` wiring behind it.
 struct AlbumHomeView: View {
     let player: Player
+    let onEditPlayer: () -> Void
 
     var body: some View {
         ZStack {
@@ -21,6 +26,10 @@ struct AlbumHomeView: View {
                 Text("album_home_placeholder_key")
                     .font(.ui(size: 14))
                     .foregroundStyle(Color.textMuted)
+
+                Button("album_edit_child_key", action: onEditPlayer)
+                    .buttonStyle(.primary)
+                    .padding(.top, 24)
             }
             .padding(24)
         }
@@ -28,5 +37,5 @@ struct AlbumHomeView: View {
 }
 
 #Preview {
-    AlbumHomeView(player: Player(name: "Марко"))
+    AlbumHomeView(player: Player(name: "Марко"), onEditPlayer: {})
 }

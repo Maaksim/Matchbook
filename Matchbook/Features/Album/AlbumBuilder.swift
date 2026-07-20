@@ -6,7 +6,8 @@ import UIKit
 enum AlbumBuilder {
     @MainActor
     static func makeHome(player: Player,
-                         repositories: Repositories) -> UIViewController {
-        UIHostingController(rootView: AlbumHomeView(player: player))
+                         repositories: Repositories,
+                         onEditPlayer: @escaping () -> Void) -> UIViewController {
+        UIHostingController(rootView: AlbumHomeView(player: player, onEditPlayer: onEditPlayer))
     }
 }
