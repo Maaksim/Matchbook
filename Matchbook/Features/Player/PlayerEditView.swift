@@ -92,10 +92,7 @@ extension PlayerEditView {
     }
 
     private var deleteAlertCancelButton: some View {
-        Button("cancel_key", role: .cancel) {
-            print("Delete popup cancelled")
-        }
-
+        Button("cancel_key", role: .cancel) { }
     }
 
     private var errorAlertOkButton: some View {
@@ -160,7 +157,7 @@ extension PlayerEditView {
     private var photoPicker: some View {
         // Opens the Camera/Gallery chooser. When there's no camera (the Simulator), the choice
         // is moot, so go straight to the library. The actual pickers are wired by
-        // `AvatarSourceModifier` on the body.
+        // `PhotoSourceModifier` on the body.
         Button {
             if isCameraAvailable {
                 isChoosingPhotoSource = true
@@ -282,6 +279,10 @@ extension PlayerEditView {
                            value: Text(viewModel.positionLabel),
                            isPlaceholder: !viewModel.hasPosition)
             }
+            // Without this the Menu announces only its value ("Оберіть"/"Choose") to VoiceOver,
+            // which is both context-free and identical to the birth-date row's "Choose" button.
+            .accessibilityLabel(Text("player_section_position_key"))
+            .accessibilityValue(Text(viewModel.positionLabel))
         }
     }
 

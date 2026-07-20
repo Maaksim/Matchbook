@@ -49,9 +49,8 @@ struct PhotoSourceModifier: ViewModifier {
             isShowingLibrary = true
         })
 
-        buttons.append(ActionSheetButton(title: "cancel_key", role: .cancel) {
-            isChoosingPhotoSource = false
-        })
+        // No action: `bottomActionSheet` already closes itself when any row is tapped.
+        buttons.append(ActionSheetButton(title: "cancel_key", role: .cancel) { })
 
         return buttons
     }

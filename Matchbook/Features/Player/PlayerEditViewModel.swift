@@ -45,7 +45,15 @@ final class PlayerEditViewModel {
     private(set) var avatarData: Data?
     private(set) var isSaving = false
     private(set) var isDeleting = false
+    /// True while a picked/captured photo is still being loaded and compressed. Gates `canSave`
+    /// so a fast tap on Add can't persist the child before its avatar has landed in `avatarData`.
+    private(set) var isLoadingPhoto = false
     private(set) var errorMessage: LocalizedStringResource?
+
+    /// Built once for `.edit` (walking the player's tournaments/matches to count photos is not
+    /// something to redo on every keystroke — the graph is fixed for the sheet's lifetime).
+    /// `nil` in `.create`, where there's nothing to delete.
+    private(set) var deleteConfirmationMessage: LocalizedStringResource?
 
     // MARK: - Coordinator callbacks
     var onCancel: (() -> Void)?
@@ -81,9 +89,10 @@ final class PlayerEditViewModel {
         isEditing ? "player_save_action_key" : "player_add_action_key"
     }
 
-    /// The name is the only required field; everything else can be filled in later.
+    /// The name is the only required field; everything else can be filled in later. Also blocked
+    /// while a photo is still resolving, so Add can't fire before the avatar is ready.
     var canSave: Bool {
-        !trimmedName.isEmpty && !isSaving && !isDeleting
+        !trimmedName.isEmpty && !isSaving && !isDeleting && !isLoadingPhoto
     }
 
     /// `.unknown` doubles as "not chosen yet" — the row shows a prompt rather than the
@@ -100,21 +109,6 @@ final class PlayerEditViewModel {
         Calendar.current.date(byAdding: .year, value: -10, to: .now) ?? .now
     }
 
-    /// Spells out the blast radius before anything is deleted: the child, their tournaments,
-    /// and every photo hanging off those tournaments and their matches (all of it cascades).
-    /// The name passes through as typed — user-generated content is never localized, which
-    /// also means it can't be declined into Ukrainian's accusative case ("Видалити Марко …",
-    /// not "Марка"); no localization API can decline an arbitrary proper noun.
-    var deleteConfirmationMessage: LocalizedStringResource? {
-        guard case .edit(let player) = mode else { return nil }
-        let tournaments = String(localized: Counts.tournaments(player.totalTournaments))
-        let photos = String(localized: Counts.photos(Self.mediaCount(of: player)))
-        return LocalizedStringResource(
-            "player_delete_confirm_message_key",
-            defaultValue: "Видалити \(player.name) та \(tournaments), \(photos)? Це незворотно."
-        )
-    }
-
     // MARK: - Actions
     func cancel() {
         onCancel?()
@@ -129,6 +123,8 @@ final class PlayerEditViewModel {
     /// avatar must survive that.
     func loadPickedPhoto() async {
         guard let photoItem else { return }
+        isLoadingPhoto = true
+        defer { isLoadingPhoto = false }
         guard let original = try? await photoItem.loadTransferable(type: Data.self) else { return }
         avatarData = await Self.compressedAvatar(from: original)
     }
@@ -137,6 +133,8 @@ final class PlayerEditViewModel {
     /// through the exact same downscale/encode path as the library picker before it lands in
     /// `avatarData`.
     func setCapturedPhoto(_ data: Data) async {
+        isLoadingPhoto = true
+        defer { isLoadingPhoto = false }
         avatarData = await Self.compressedAvatar(from: data)
     }
 
@@ -185,6 +183,21 @@ final class PlayerEditViewModel {
         position = player.position
         birthDate = player.birthDate
         avatarData = player.avatarData
+        deleteConfirmationMessage = Self.makeDeleteConfirmationMessage(for: player)
+    }
+
+    /// Spells out the blast radius before anything is deleted: the child, their tournaments, and
+    /// every photo hanging off those tournaments and their matches (all of it cascades). The name
+    /// passes through as typed — user-generated content is never localized, which also means it
+    /// can't be declined into Ukrainian's accusative case ("Видалити Марко …", not "Марка"); no
+    /// localization API can decline an arbitrary proper noun.
+    private static func makeDeleteConfirmationMessage(for player: Player) -> LocalizedStringResource {
+        let tournaments = String(localized: Counts.tournaments(player.totalTournaments))
+        let photos = String(localized: Counts.photos(mediaCount(of: player)))
+        return LocalizedStringResource(
+            "player_delete_confirm_message_key",
+            defaultValue: "Видалити \(player.name) та \(tournaments), \(photos)? Це незворотно."
+        )
     }
 
     private func apply(to player: Player) {

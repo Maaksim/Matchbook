@@ -23,15 +23,28 @@ final class SwiftDataPlayerRepository: PlayerRepository {
 
     func create(_ player: Player) async throws {
         modelContext.insert(player)
-        try modelContext.save()
+        try saveOrRollback()
     }
 
     func update(_ player: Player) async throws {
-        try modelContext.save()
+        try saveOrRollback()
     }
 
     func delete(_ player: Player) async throws {
         modelContext.delete(player)
-        try modelContext.save()
+        try saveOrRollback()
+    }
+
+    /// The `mainContext` is shared and autosaving, and callers mutate the live `@Model` *before*
+    /// calling here, so a failed `save()` would otherwise leave those rejected changes sitting
+    /// dirty in the context — visible in the UI and flushed by the next (auto)save. Roll back to
+    /// the last persisted state before rethrowing so a failure is a true no-op.
+    private func saveOrRollback() throws {
+        do {
+            try modelContext.save()
+        } catch {
+            modelContext.rollback()
+            throw error
+        }
     }
 }
